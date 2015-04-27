@@ -4,7 +4,7 @@ Docker-Ansible base images
 
 ## Summary
 
-Repository name in Docker Hub: **[williamyeh/ansible]((https://registry.hub.docker.com/u/williamyeh/ansible/)**
+Repository name in Docker Hub: **[williamyeh/ansible](https://registry.hub.docker.com/u/williamyeh/ansible/)**
 
 This repository contains Dockerized [Ansible](https://github.com/ansible/ansible), published to the public [Docker Hub](https://registry.hub.docker.com/) via **automated build** mechanism.
 
