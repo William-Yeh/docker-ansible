@@ -14,7 +14,7 @@ This repository contains Dockerized [Ansible](https://github.com/ansible/ansible
 
 These are Docker images for [Ansible](https://github.com/ansible/ansible) software, installed in a selected Linux distributions.
 
-- OS: Debian (jessie, wheezy), Ubuntu (trusty, precise).
+- OS: Debian (jessie, wheezy), Ubuntu (trusty, precise), CentOS (6)
 
 - Ansible: usually the latest version.
 
@@ -27,6 +27,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:debian7`
   - `williamyeh/ansible:ubuntu14.04`
   - `williamyeh/ansible:ubuntu12.04`
+  - `williamyeh/ansible:centos6`
 
 - onbuild series:
 
@@ -34,6 +35,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:debian7-onbuild`
   - `williamyeh/ansible:ubuntu14.04-onbuild`
   - `williamyeh/ansible:ubuntu12.04-onbuild`
+  - `williamyeh/ansible:centos6-onbuild`
 
 
 ## Why yet another Ansible image for Docker?
@@ -64,6 +66,8 @@ Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/trusty64"
     #config.vm.box = "hashicorp/precise64"
     #config.vm.box = "chef/debian-7.8"
+    #config.vm.box = "chef/centos-6.6"
+
 
     # ==> Executing Ansible...
     config.vm.provision "ansible" do |ansible|
@@ -87,6 +91,7 @@ FROM williamyeh/ansible:ubuntu14.04
 #FROM williamyeh/ansible:ubuntu12.04
 #FROM williamyeh/ansible:debian8
 #FROM williamyeh/ansible:debian7
+#FROM williamyeh/ansible:centos6
 
 
 # ==> Copying Ansible playbook...
@@ -111,6 +116,7 @@ FROM williamyeh/ansible:ubuntu14.04-onbuild
 #FROM williamyeh/ansible:ubuntu12.04-onbuild
 #FROM williamyeh/ansible:debian8-onbuild
 #FROM williamyeh/ansible:debian7-onbuild
+#FROM williamyeh/ansible:centos6-onbuild
 
 
 # ==> Specify playbook filename;   default = "playbook.yml"
