@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Simple wrapper for executing ansible-playbook with local connection.
+#
+# USAGE:
+#    ansible-playbook-wrapper  [other ansible-playbook arguments]
+#
+# ENVIRONMENT VARIABLES:
+# 
+#    - PLAYBOOK: playbook filename;   default = "playbook.yml"
+#    - INVENTORY: inventory filename; default = "/etc/ansible/hosts"
+# 
+
+
+if [ -z "$PLAYBOOK" ]; then
+    PLAYBOOK=playbook.yml
+fi
+
+
+if [ -z "$INVENTORY" ]; then
+    exec ansible-playbook        \
+       $PLAYBOOK                 \
+       --connection=local        \
+       "$@"
+else
+    exec ansible-playbook        \
+       -i $INVENTORY  $PLAYBOOK  \
+       --connection=local        \
+       "$@"
+fi

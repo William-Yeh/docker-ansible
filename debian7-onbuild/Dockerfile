@@ -35,5 +35,13 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     echo '[local]\nlocalhost\n' > /etc/ansible/hosts
 
 
+COPY ansible-playbook-wrapper /usr/local/bin/
+
+ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update
+ONBUILD  WORKDIR /tmp
+ONBUILD  COPY  .  /tmp
+
+
+
 # default command: display Ansible version
 CMD [ "ansible-playbook", "--version" ]

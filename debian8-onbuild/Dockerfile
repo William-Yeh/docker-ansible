@@ -1,4 +1,4 @@
-# Dockerfile for building Ansible image for Debian 7 (wheezy), with as few additional software as possible.
+# Dockerfile for building Ansible image for Debian 8 (jessie), with as few additional software as possible.
 #
 # @see https://launchpad.net/~ansible/+archive/ubuntu/ansible
 #
@@ -7,7 +7,7 @@
 
 
 # pull base image
-FROM debian:wheezy
+FROM debian:jessie
 
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
@@ -33,6 +33,14 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     echo "===> Adding hosts for convenience..."        && \
     mkdir -p /etc/ansible                              && \
     echo '[local]\nlocalhost\n' > /etc/ansible/hosts
+
+
+COPY ansible-playbook-wrapper /usr/local/bin/
+
+ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update
+ONBUILD  WORKDIR /tmp
+ONBUILD  COPY  .  /tmp
+
 
 
 # default command: display Ansible version
