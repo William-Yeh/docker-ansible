@@ -67,7 +67,7 @@ Third, `docker build .`
 
 Done!
 
-For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://github.com/William-Yeh/ansible-nginx) also demonstrates how to do a simple integration test on [Travis CI](https://travis-ci.org/).
+For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/list#/roles/2245) also demonstrates how to do a simple integration test for a variety of Linux distributions on [Travis CI](https://travis-ci.org/)’s Ubuntu 12.04 worker instances.
 
 
 
