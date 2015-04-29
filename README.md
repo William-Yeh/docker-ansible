@@ -42,6 +42,36 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:centos6-onbuild`
 
 
+## For the impatient
+
+Here comes a simplest working example for the impatient.
+
+First, choose a base image you'd like to begin with. For example, `williamyeh/ansible:ubuntu14.04-onbuild`.
+
+Second, put the following `Dockerfile` along with your playbook directory:
+
+```
+FROM williamyeh/ansible:ubuntu14.04-onbuild
+
+# ==> Specify playbook filename;   default = "playbook.yml"
+#ENV PLAYBOOK   playbook.yml
+
+# ==> Specify inventory filename;  default = "/etc/ansible/hosts"
+#ENV INVENTORY  inventory.ini
+
+# ==> Executing Ansible...
+RUN ansible-playbook-wrapper
+```
+
+Third, `docker build .`
+
+Done!
+
+For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://github.com/William-Yeh/ansible-nginx) also demonstrates how to do a simple integration test on [Travis CI](https://travis-ci.org/).
+
+
+
+
 ## Why yet another Ansible image for Docker?
 
 There has been quite a few Ansible images for Docker (e.g., [search](https://registry.hub.docker.com/search?q=ansible) in the Docker Hub), so why reinvent the wheel?
@@ -55,11 +85,28 @@ In the beginning I used the [`ansible/ansible-docker-base`](https://github.com/a
 Therefore, I built these Docker images on my own.
 
 
+### Comparison: image size
+
+```
+REPOSITORY                    TAG                   VIRTUAL SIZE
+---------------------------   -------------------   ------------
+ansible/centos7-ansible       stable                367.5 MB
+ansible/ubuntu14.04-ansible   stable                286.6 MB
+
+williamyeh/ansible            centos6-onbuild       264.2 MB
+williamyeh/ansible            centos7-onbuild       275.3 MB
+williamyeh/ansible            debian7-onbuild       134.4 MB
+williamyeh/ansible            debian8-onbuild       178.3 MB
+williamyeh/ansible            ubuntu12.04-onbuild   181.9 MB
+williamyeh/ansible            ubuntu14.04-onbuild   238.3 MB
+```
+
+
 ## Usage
 
 Used mostly as a *base image* for configuring, with Ansible, other software stack on some specified Linux distribution.
 
-Take Debian/Ubuntu for example. To test an Ansible `playbook.yml` against a variety of Linux distributions, we may use [Vagrant](https://www.vagrantup.com/) as follows:
+Take Debian/Ubuntu/CentOS for example. To test an Ansible `playbook.yml` against a variety of Linux distributions, we may use [Vagrant](https://www.vagrantup.com/) as follows:
 
 ```ruby
 # Vagrantfile
