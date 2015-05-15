@@ -36,6 +36,9 @@ COPY ansible-playbook-wrapper /usr/local/bin/
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update
 ONBUILD  WORKDIR /tmp
 ONBUILD  COPY  .  /tmp
+ONBUILD  RUN  \
+              echo "===> Diagnosis: host information..."  && \
+              ansible -c local -m setup all
 
 
 
