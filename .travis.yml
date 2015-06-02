@@ -1,7 +1,14 @@
+env:
+  global:
+    - BRANCH=stable
+    - QUIET=1
+    - UML_DOCKERCOMPOSE=0
+    - UML_FIG=0
+
 sudo: true
 
 install:
-  - curl -sLo - https://github.com/moul/travis-docker/raw/master/install.sh | sh -xe
+  - curl -sLo - http://j.mp/install-travis-docker | sh -xe
 
 script:
   - echo "==> Building the main Docker images..."
