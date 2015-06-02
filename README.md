@@ -1,7 +1,7 @@
 Docker-Ansible base images
 ===================
 
-[![Build Status](https://travis-ci.org/William-Yeh/docker-ansible.svg?branch=master)](https://travis-ci.org/William-Yeh/docker-ansible)
+[![Circle CI](https://circleci.com/gh/William-Yeh/docker-ansible.svg?style=shield)](https://circleci.com/gh/William-Yeh/docker-ansible) [![Build Status](https://travis-ci.org/William-Yeh/docker-ansible.svg?branch=master)](https://travis-ci.org/William-Yeh/docker-ansible)
 
 
 ## Summary

@@ -1,0 +1,73 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker version
+
+    - cp test/Dockerfile-ubuntu14.04 Dockerfile
+    - docker build  -t ansible_trusty   .
+
+    - cp test/Dockerfile-ubuntu12.04 Dockerfile
+    - docker build  -t ansible_precise  .
+
+    - cp test/Dockerfile-debian8 Dockerfile
+    - docker build  -t ansible_jessie   .
+
+    - cp test/Dockerfile-debian7 Dockerfile
+    - docker build  -t ansible_wheezy   .
+
+    - cp test/Dockerfile-centos7 Dockerfile
+    - docker build  -t ansible_centos7  .
+
+    - cp test/Dockerfile-centos6 Dockerfile
+    - docker build  -t ansible_centos6  .
+
+    - cp test/Dockerfile-ubuntu14.04-onbuild Dockerfile
+    - docker build  -t ansible_trusty_onbuild   .
+
+    - cp test/Dockerfile-ubuntu12.04-onbuild Dockerfile
+    - docker build  -t ansible_precise_onbuild  .
+
+    - cp test/Dockerfile-debian8-onbuild Dockerfile
+    - docker build  -t ansible_jessie_onbuild   .
+
+    - cp test/Dockerfile-debian7-onbuild Dockerfile
+    - docker build  -t ansible_wheezy_onbuild   .
+
+    - cp test/Dockerfile-centos7-onbuild Dockerfile
+    - docker build  -t ansible_centos7_onbuild  .
+
+    - cp test/Dockerfile-centos6-onbuild Dockerfile
+    - docker build  -t ansible_centos6_onbuild  .
+
+test:
+  override:
+    - docker run -i ansible_trusty   > result-ubuntu14.04
+    - docker run -i ansible_precise  > result-ubuntu12.04
+    - docker run -i ansible_jessie   > result-debian8
+    - docker run -i ansible_wheezy   > result-debian7
+    - docker run -i ansible_centos7  > result-centos7
+    - docker run -i ansible_centos6  > result-centos6
+    - docker run -i ansible_trusty_onbuild   > result-ubuntu14.04-onbuild
+    - docker run -i ansible_precise_onbuild  > result-ubuntu12.04-onbuild
+    - docker run -i ansible_jessie_onbuild   > result-debian8-onbuild
+    - docker run -i ansible_wheezy_onbuild   > result-debian7-onbuild
+    - docker run -i ansible_centos7_onbuild  > result-centos7-onbuild
+    - docker run -i ansible_centos6_onbuild  > result-centos6-onbuild
+
+    - echo "==> Validating the test results..."
+    - sh -c "[ -s result-ubuntu14.04 ]"
+    - sh -c "[ -s result-ubuntu12.04 ]"
+    - sh -c "[ -s result-debian8     ]"
+    - sh -c "[ -s result-debian7     ]"
+    - sh -c "[ -s result-centos7     ]"
+    - sh -c "[ -s result-centos6     ]"
+    - sh -c "[ -s result-ubuntu14.04-onbuild ]"
+    - sh -c "[ -s result-ubuntu12.04-onbuild ]"
+    - sh -c "[ -s result-debian8-onbuild     ]"
+    - sh -c "[ -s result-debian7-onbuild     ]"
+    - sh -c "[ -s result-centos7-onbuild     ]"
+    - sh -c "[ -s result-centos6-onbuild     ]"
