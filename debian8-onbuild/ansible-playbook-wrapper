@@ -9,11 +9,19 @@
 # 
 #    - PLAYBOOK: playbook filename;   default = "playbook.yml"
 #    - INVENTORY: inventory filename; default = "/etc/ansible/hosts"
-# 
+#    - REQUIREMENTS: requirements filename; default = "requirements.yml"
+#
 
 
 if [ -z "$PLAYBOOK" ]; then
     PLAYBOOK=playbook.yml
+fi
+
+
+if [ -z "$REQUIREMENTS" ]; then
+    exec ansible-galaxy          \
+    install -r $REQUIREMENTS     \
+       "$@"
 fi
 
 
@@ -28,3 +36,4 @@ else
        --connection=local        \
        "$@"
 fi
+
