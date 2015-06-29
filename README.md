@@ -53,11 +53,14 @@ Second, put the following `Dockerfile` along with your playbook directory:
 ```
 FROM williamyeh/ansible:ubuntu14.04-onbuild
 
-# ==> Specify playbook filename;   default = "playbook.yml"
-#ENV PLAYBOOK   playbook.yml
+# ==> Specify requirements filename;  default = "requirements.yml"
+#ENV REQUIREMENTS  requirements.yml
 
-# ==> Specify inventory filename;  default = "/etc/ansible/hosts"
-#ENV INVENTORY  inventory.ini
+# ==> Specify playbook filename;      default = "playbook.yml"
+#ENV PLAYBOOK      playbook.yml
+
+# ==> Specify inventory filename;     default = "/etc/ansible/hosts"
+#ENV INVENTORY     inventory.ini
 
 # ==> Executing Ansible...
 RUN ansible-playbook-wrapper
@@ -67,7 +70,7 @@ Third, `docker build .`
 
 Done!
 
-For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/list#/roles/2245) also demonstrates how to do a simple integration test for a variety of Linux distributions on [Travis CI](https://travis-ci.org/)’s Ubuntu 12.04 worker instances.
+For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/list#/roles/2245) also demonstrates how to do a simple integration test for a variety of Linux distributions on [CircleCI](https://circleci.com/)'s and [Travis CI](https://travis-ci.org/)’s Ubuntu 12.04 worker instances.
 
 
 
@@ -173,11 +176,14 @@ FROM williamyeh/ansible:ubuntu14.04-onbuild
 #FROM williamyeh/ansible:centos6-onbuild
 
 
-# ==> Specify playbook filename;   default = "playbook.yml"
-#ENV PLAYBOOK   playbook.yml
+# ==> Specify requirements filename;  default = "requirements.yml"
+#ENV REQUIREMENTS  requirements.yml
 
-# ==> Specify inventory filename;  default = "/etc/ansible/hosts"
-#ENV INVENTORY  inventory.ini
+# ==> Specify playbook filename;      default = "playbook.yml"
+#ENV PLAYBOOK      playbook.yml
+
+# ==> Specify inventory filename;     default = "/etc/ansible/hosts"
+#ENV INVENTORY     inventory.ini
 
 # ==> Executing Ansible...
 RUN ansible-playbook-wrapper
