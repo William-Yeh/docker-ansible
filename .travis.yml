@@ -12,18 +12,18 @@ install:
 
 script:
   - echo "==> Building the main Docker images..."
-  - ./run 'docker build -f centos6/Dockerfile      -t ansible  centos6      &&  docker run -i ansible > result-centos6'
-  - ./run 'docker build -f centos7/Dockerfile      -t ansible  centos7      &&  docker run -i ansible > result-centos7'
-  - ./run 'docker build -f debian7/Dockerfile      -t ansible  debian7      &&  docker run -i ansible > result-debian7'
-  - ./run 'docker build -f debian8/Dockerfile      -t ansible  debian8      &&  docker run -i ansible > result-debian8'
-  - ./run 'docker build -f ubuntu12.04/Dockerfile  -t ansible  ubuntu12.04  &&  docker run -i ansible > result-ubuntu12.04'
-  - ./run 'docker build -f ubuntu14.04/Dockerfile  -t ansible  ubuntu14.04  &&  docker run -i ansible > result-ubuntu14.04'
-  - ./run 'docker build -f centos6-onbuild/Dockerfile      -t ansible  centos6-onbuild      &&  docker run -i ansible > result-centos6-onbuild'
-  - ./run 'docker build -f centos7-onbuild/Dockerfile      -t ansible  centos7-onbuild      &&  docker run -i ansible > result-centos7-onbuild'
-  - ./run 'docker build -f debian7-onbuild/Dockerfile      -t ansible  debian7-onbuild      &&  docker run -i ansible > result-debian7-onbuild'
-  - ./run 'docker build -f debian8-onbuild/Dockerfile      -t ansible  debian8-onbuild      &&  docker run -i ansible > result-debian8-onbuild'
-  - ./run 'docker build -f ubuntu12.04-onbuild/Dockerfile  -t ansible  ubuntu12.04-onbuild  &&  docker run -i ansible > result-ubuntu12.04-onbuild'
-  - ./run 'docker build -f ubuntu14.04-onbuild/Dockerfile  -t ansible  ubuntu14.04-onbuild  &&  docker run -i ansible > result-ubuntu14.04-onbuild'
+  - ./run 'docker build  -t ansible  centos6      &&  docker run -i ansible > result-centos6'
+  - ./run 'docker build  -t ansible  centos7      &&  docker run -i ansible > result-centos7'
+  - ./run 'docker build  -t ansible  debian7      &&  docker run -i ansible > result-debian7'
+  - ./run 'docker build  -t ansible  debian8      &&  docker run -i ansible > result-debian8'
+  - ./run 'docker build  -t ansible  ubuntu12.04  &&  docker run -i ansible > result-ubuntu12.04'
+  - ./run 'docker build  -t ansible  ubuntu14.04  &&  docker run -i ansible > result-ubuntu14.04'
+  - ./run 'docker build  -t ansible  centos6-onbuild      &&  docker run -i ansible > result-centos6-onbuild'
+  - ./run 'docker build  -t ansible  centos7-onbuild      &&  docker run -i ansible > result-centos7-onbuild'
+  - ./run 'docker build  -t ansible  debian7-onbuild      &&  docker run -i ansible > result-debian7-onbuild'
+  - ./run 'docker build  -t ansible  debian8-onbuild      &&  docker run -i ansible > result-debian8-onbuild'
+  - ./run 'docker build  -t ansible  ubuntu12.04-onbuild  &&  docker run -i ansible > result-ubuntu12.04-onbuild'
+  - ./run 'docker build  -t ansible  ubuntu14.04-onbuild  &&  docker run -i ansible > result-ubuntu14.04-onbuild'
 
 
   - echo "==> Validating the test results..."

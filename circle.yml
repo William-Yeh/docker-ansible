@@ -7,40 +7,18 @@ dependencies:
     - docker info
     - docker version
 
-    - cp ubuntu14.04/Dockerfile Dockerfile
-    - docker build  -t ansible_trusty   ubuntu14.04
+    - docker build  -t ansible_trusty           ubuntu14.04
+    - docker build  -t ansible_precise          ubuntu12.04
+    - docker build  -t ansible_jessie           debian8
+    - docker build  -t ansible_wheezy           debian7
+    - docker build  -t ansible_centos7          centos7
+    - docker build  -t ansible_centos6          centos6
 
-    - cp ubuntu12.04/Dockerfile Dockerfile
-    - docker build  -t ansible_precise  ubuntu12.04
-
-    - cp debian8/Dockerfile     Dockerfile
-    - docker build  -t ansible_jessie   debian8
-
-    - cp debian7/Dockerfile     Dockerfile
-    - docker build  -t ansible_wheezy   debian7
-
-    - cp centos7/Dockerfile     Dockerfile
-    - docker build  -t ansible_centos7  centos7
-
-    - cp centos6/Dockerfile     Dockerfile
-    - docker build  -t ansible_centos6  centos6
-
-    - cp ubuntu14.04-onbuild/Dockerfile  Dockerfile
     - docker build  -t ansible_trusty_onbuild   ubuntu14.04-onbuild
-
-    - cp ubuntu12.04-onbuild/Dockerfile  Dockerfile
     - docker build  -t ansible_precise_onbuild  ubuntu12.04-onbuild
-
-    - cp debian8-onbuild/Dockerfile      Dockerfile
     - docker build  -t ansible_jessie_onbuild   debian8-onbuild
-
-    - cp debian7-onbuild/Dockerfile      Dockerfile
     - docker build  -t ansible_wheezy_onbuild   debian7-onbuild
-
-    - cp centos7-onbuild/Dockerfile      Dockerfile
     - docker build  -t ansible_centos7_onbuild  centos7-onbuild
-
-    - cp centos6-onbuild/Dockerfile      Dockerfile
     - docker build  -t ansible_centos6_onbuild  centos6-onbuild
 
 test:
