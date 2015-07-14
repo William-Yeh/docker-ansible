@@ -33,8 +33,11 @@ RUN echo "===> Adding Ansible's PPA..."  && \
 
 COPY ansible-playbook-wrapper /usr/local/bin/
 
-ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update
-ONBUILD  WORKDIR /tmp
+ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
+              echo "===> Updating TLS certificates..."         && \
+              apt-get install -y openssl ca-certificates
+
+ONBUILD  WORKDIR  /tmp
 ONBUILD  COPY  .  /tmp
 ONBUILD  RUN  \
               echo "===> Diagnosis: host information..."  && \
