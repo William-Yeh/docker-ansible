@@ -87,6 +87,7 @@ In the beginning I used the [`ansible/ansible-docker-base`](https://github.com/a
 
 Therefore, I built these Docker images on my own.
 
+**NOTE:** [`ansible/ansible-docker-base`](https://github.com/ansible/ansible-docker-base) announced in September 2015: “Ansible no longer maintains images in Dockerhub directly.”
 
 ### Comparison: image size
 
