@@ -18,12 +18,12 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 - OS: Debian (jessie, wheezy), Ubuntu (trusty, precise), CentOS (7, 6)
 
-- Ansible: usually the latest version.
+- Ansible: usually the latest version (I didn't pin any specific version).
 
 
 ## Images and tags
 
-- normal series:
+- Normal series:
 
   - `williamyeh/ansible:debian8`
   - `williamyeh/ansible:debian7`
@@ -32,7 +32,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:centos7`
   - `williamyeh/ansible:centos6`
 
-- onbuild series:
+- Onbuild series:
 
   - `williamyeh/ansible:debian8-onbuild`
   - `williamyeh/ansible:debian7-onbuild`
@@ -70,7 +70,7 @@ Third, `docker build .`
 
 Done!
 
-For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/list#/roles/2245) also demonstrates how to do a simple integration test for a variety of Linux distributions on [CircleCI](https://circleci.com/)'s and [Travis CI](https://travis-ci.org/)’s Ubuntu 12.04 worker instances.
+For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/list#/roles/2245) demonstrates how to perform a simple smoke test (*configuration needs test, too!*) on a variety of (*containerized*) Linux distributions via [CircleCI](https://circleci.com/)'s Ubuntu 12.04 and [Travis CI](https://travis-ci.org/)’s Ubuntu 14.04 worker instances.
 
 
 
@@ -108,7 +108,7 @@ williamyeh/ansible            ubuntu14.04-onbuild   238.3 MB
 
 ## Usage
 
-Used mostly as a *base image* for configuring, with Ansible, other software stack on some specified Linux distribution.
+Used mostly as a *base image* for configuring other software stack on some specified Linux distribution(s).
 
 Take Debian/Ubuntu/CentOS for example. To test an Ansible `playbook.yml` against a variety of Linux distributions, we may use [Vagrant](https://www.vagrantup.com/) as follows:
 
