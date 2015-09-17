@@ -1,41 +1,49 @@
-env:
-  global:
-    - BRANCH=stable
-    - QUIET=1
-    - UML_DOCKERCOMPOSE=0
-    - UML_FIG=0
-
 sudo: true
+services:
+    - docker
 
-install:
-  - curl -sLo - http://j.mp/install-travis-docker | sh -xe
+before_install:
+    - docker info
+    - docker version
+
+    - docker build  -t ansible_trusty           ubuntu14.04
+    - docker build  -t ansible_precise          ubuntu12.04
+    - docker build  -t ansible_jessie           debian8
+    - docker build  -t ansible_wheezy           debian7
+    - docker build  -t ansible_centos7          centos7
+    - docker build  -t ansible_centos6          centos6
+
+    - docker build  -t ansible_trusty_onbuild   ubuntu14.04-onbuild
+    - docker build  -t ansible_precise_onbuild  ubuntu12.04-onbuild
+    - docker build  -t ansible_jessie_onbuild   debian8-onbuild
+    - docker build  -t ansible_wheezy_onbuild   debian7-onbuild
+    - docker build  -t ansible_centos7_onbuild  centos7-onbuild
+    - docker build  -t ansible_centos6_onbuild  centos6-onbuild
 
 script:
-  - echo "==> Building the main Docker images..."
-  - ./run 'docker build  -t ansible  centos6      &&  docker run -i ansible > result-centos6'
-  - ./run 'docker build  -t ansible  centos7      &&  docker run -i ansible > result-centos7'
-  - ./run 'docker build  -t ansible  debian7      &&  docker run -i ansible > result-debian7'
-  - ./run 'docker build  -t ansible  debian8      &&  docker run -i ansible > result-debian8'
-  - ./run 'docker build  -t ansible  ubuntu12.04  &&  docker run -i ansible > result-ubuntu12.04'
-  - ./run 'docker build  -t ansible  ubuntu14.04  &&  docker run -i ansible > result-ubuntu14.04'
-  - ./run 'docker build  -t ansible  centos6-onbuild      &&  docker run -i ansible > result-centos6-onbuild'
-  - ./run 'docker build  -t ansible  centos7-onbuild      &&  docker run -i ansible > result-centos7-onbuild'
-  - ./run 'docker build  -t ansible  debian7-onbuild      &&  docker run -i ansible > result-debian7-onbuild'
-  - ./run 'docker build  -t ansible  debian8-onbuild      &&  docker run -i ansible > result-debian8-onbuild'
-  - ./run 'docker build  -t ansible  ubuntu12.04-onbuild  &&  docker run -i ansible > result-ubuntu12.04-onbuild'
-  - ./run 'docker build  -t ansible  ubuntu14.04-onbuild  &&  docker run -i ansible > result-ubuntu14.04-onbuild'
+    - docker run -i ansible_trusty           > result-ubuntu14.04
+    - docker run -i ansible_precise          > result-ubuntu12.04
+    - docker run -i ansible_jessie           > result-debian8
+    - docker run -i ansible_wheezy           > result-debian7
+    - docker run -i ansible_centos7          > result-centos7
+    - docker run -i ansible_centos6          > result-centos6
+    - docker run -i ansible_trusty_onbuild   > result-ubuntu14.04-onbuild
+    - docker run -i ansible_precise_onbuild  > result-ubuntu12.04-onbuild
+    - docker run -i ansible_jessie_onbuild   > result-debian8-onbuild
+    - docker run -i ansible_wheezy_onbuild   > result-debian7-onbuild
+    - docker run -i ansible_centos7_onbuild  > result-centos7-onbuild
+    - docker run -i ansible_centos6_onbuild  > result-centos6-onbuild
 
-
-  - echo "==> Validating the test results..."
-  - grep '^ansible-playbook' result-centos6      ||  exit 1
-  - grep '^ansible-playbook' result-centos7      ||  exit 1
-  - grep '^ansible-playbook' result-debian7      ||  exit 1
-  - grep '^ansible-playbook' result-debian8      ||  exit 1
-  - grep '^ansible-playbook' result-ubuntu12.04  ||  exit 1
-  - grep '^ansible-playbook' result-ubuntu14.04  ||  exit 1
-  - grep '^ansible-playbook' result-centos6-onbuild      ||  exit 1
-  - grep '^ansible-playbook' result-centos7-onbuild      ||  exit 1
-  - grep '^ansible-playbook' result-debian7-onbuild      ||  exit 1
-  - grep '^ansible-playbook' result-debian8-onbuild      ||  exit 1
-  - grep '^ansible-playbook' result-ubuntu12.04-onbuild  ||  exit 1
-  - grep '^ansible-playbook' result-ubuntu14.04-onbuild  ||  exit 1
+    - echo "==> Validating the test results..."
+    - sh -c "[ -s result-ubuntu14.04         ]"
+    - sh -c "[ -s result-ubuntu12.04         ]"
+    - sh -c "[ -s result-debian8             ]"
+    - sh -c "[ -s result-debian7             ]"
+    - sh -c "[ -s result-centos7             ]"
+    - sh -c "[ -s result-centos6             ]"
+    - sh -c "[ -s result-ubuntu14.04-onbuild ]"
+    - sh -c "[ -s result-ubuntu12.04-onbuild ]"
+    - sh -c "[ -s result-debian8-onbuild     ]"
+    - sh -c "[ -s result-debian7-onbuild     ]"
+    - sh -c "[ -s result-centos7-onbuild     ]"
+    - sh -c "[ -s result-centos6-onbuild     ]"
