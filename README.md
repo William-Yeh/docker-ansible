@@ -16,7 +16,7 @@ This repository contains Dockerized [Ansible](https://github.com/ansible/ansible
 
 These are Docker images for [Ansible](https://github.com/ansible/ansible) software, installed in a selected Linux distributions.
 
-- OS: Debian (jessie, wheezy), Ubuntu (trusty, precise), CentOS (7, 6)
+- OS: Debian (jessie, wheezy), Ubuntu (trusty, precise), CentOS (7, 6), Alpine (3).
 
 - Ansible: usually the latest version (I didn't pin any specific version).
 
@@ -31,6 +31,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:ubuntu12.04`
   - `williamyeh/ansible:centos7`
   - `williamyeh/ansible:centos6`
+  - `williamyeh/ansible:alpine3`
 
 - Onbuild series:
 
@@ -40,6 +41,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:ubuntu12.04-onbuild`
   - `williamyeh/ansible:centos7-onbuild`
   - `williamyeh/ansible:centos6-onbuild`
+  - `williamyeh/ansible:alpine3-onbuild`
 
 
 ## For the impatient
@@ -97,6 +99,7 @@ REPOSITORY                    TAG                   VIRTUAL SIZE
 ansible/centos7-ansible       stable                367.5 MB
 ansible/ubuntu14.04-ansible   stable                286.6 MB
 
+williamyeh/ansible            alpine3-onbuild        66.4 MB
 williamyeh/ansible            centos6-onbuild       264.2 MB
 williamyeh/ansible            centos7-onbuild       275.3 MB
 williamyeh/ansible            debian7-onbuild       134.4 MB
@@ -119,10 +122,12 @@ Vagrant.configure(2) do |config|
 
     # ==> Choose a Vagrant box to emulate Linux distribution...
     config.vm.box = "ubuntu/trusty64"
-    #config.vm.box = "hashicorp/precise64"
-    #config.vm.box = "chef/debian-7.8"
-    #config.vm.box = "chef/centos-7.0"
-    #config.vm.box = "chef/centos-6.6"
+    #config.vm.box = "ubuntu/precise64"
+    #config.vm.box = "debian/jessie64"
+    #config.vm.box = "debian/wheezy64"
+    #config.vm.box = "bento/centos-7.1"
+    #config.vm.box = "bento/centos-6.7"
+    #config.vm.box = "maier/alpine-3.1.3-x86_64"
 
 
     # ==> Executing Ansible...
@@ -149,6 +154,7 @@ FROM williamyeh/ansible:ubuntu14.04
 #FROM williamyeh/ansible:debian7
 #FROM williamyeh/ansible:centos7
 #FROM williamyeh/ansible:centos6
+#FROM williamyeh/ansible:alpine3
 
 
 # ==> Copying Ansible playbook...
@@ -175,6 +181,7 @@ FROM williamyeh/ansible:ubuntu14.04-onbuild
 #FROM williamyeh/ansible:debian7-onbuild
 #FROM williamyeh/ansible:centos7-onbuild
 #FROM williamyeh/ansible:centos6-onbuild
+#FROM williamyeh/ansible:alpine3-onbuild
 
 
 # ==> Specify requirements filename;  default = "requirements.yml"

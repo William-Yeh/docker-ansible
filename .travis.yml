@@ -12,6 +12,7 @@ before_install:
     - docker build  -t ansible_wheezy           debian7
     - docker build  -t ansible_centos7          centos7
     - docker build  -t ansible_centos6          centos6
+    - docker build  -t ansible_alpine3          alpine3
 
     - docker build  -t ansible_trusty_onbuild   ubuntu14.04-onbuild
     - docker build  -t ansible_precise_onbuild  ubuntu12.04-onbuild
@@ -19,6 +20,7 @@ before_install:
     - docker build  -t ansible_wheezy_onbuild   debian7-onbuild
     - docker build  -t ansible_centos7_onbuild  centos7-onbuild
     - docker build  -t ansible_centos6_onbuild  centos6-onbuild
+    - docker build  -t ansible_alpine3_onbuild  alpine3-onbuild
 
 script:
     - docker run -i ansible_trusty           > result-ubuntu14.04
@@ -27,12 +29,14 @@ script:
     - docker run -i ansible_wheezy           > result-debian7
     - docker run -i ansible_centos7          > result-centos7
     - docker run -i ansible_centos6          > result-centos6
+    - docker run -i ansible_alpine3          > result-alpine3
     - docker run -i ansible_trusty_onbuild   > result-ubuntu14.04-onbuild
     - docker run -i ansible_precise_onbuild  > result-ubuntu12.04-onbuild
     - docker run -i ansible_jessie_onbuild   > result-debian8-onbuild
     - docker run -i ansible_wheezy_onbuild   > result-debian7-onbuild
     - docker run -i ansible_centos7_onbuild  > result-centos7-onbuild
     - docker run -i ansible_centos6_onbuild  > result-centos6-onbuild
+    - docker run -i ansible_alpine3_onbuild  > result-alpine3-onbuild
 
     - echo "==> Validating the test results..."
     - sh -c "[ -s result-ubuntu14.04         ]"
@@ -41,9 +45,11 @@ script:
     - sh -c "[ -s result-debian7             ]"
     - sh -c "[ -s result-centos7             ]"
     - sh -c "[ -s result-centos6             ]"
+    - sh -c "[ -s result-alpine3             ]"
     - sh -c "[ -s result-ubuntu14.04-onbuild ]"
     - sh -c "[ -s result-ubuntu12.04-onbuild ]"
     - sh -c "[ -s result-debian8-onbuild     ]"
     - sh -c "[ -s result-debian7-onbuild     ]"
     - sh -c "[ -s result-centos7-onbuild     ]"
     - sh -c "[ -s result-centos6-onbuild     ]"
+    - sh -c "[ -s result-alpine3-onbuild     ]"
