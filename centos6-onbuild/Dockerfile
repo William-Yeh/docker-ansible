@@ -21,6 +21,10 @@ RUN echo "===> Installing EPEL..."        && \
     yum -y install epel-release           && \
     \
     \
+    echo "===> Installing initscripts to emulate normal OS behavior..."  && \
+    yum -y install initscripts            && \
+    \
+    \
     echo "===> Installing Ansible..."     && \
     yum -y install ansible sudo           && \
     \
