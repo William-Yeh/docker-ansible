@@ -25,7 +25,7 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     \
     \
     echo "===> Removing unused APT resources..."                       && \
-    apt-get -f -y --auto-remove remove curl gcc python-pip python-dev  && \
+    apt-get -f -y --auto-remove remove gcc python-pip python-dev  && \
     apt-get clean                                                      && \
     rm -rf /var/lib/apt/lists/*  /tmp/*                                && \
     \
