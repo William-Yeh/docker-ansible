@@ -33,7 +33,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:centos6`
   - `williamyeh/ansible:alpine3`
 
-- Onbuild series:
+- Onbuild series (*recommended for common cases*):
 
   - `williamyeh/ansible:debian8-onbuild`
   - `williamyeh/ansible:debian7-onbuild`
@@ -64,7 +64,7 @@ FROM williamyeh/ansible:ubuntu14.04-onbuild
 # ==> Specify inventory filename;     default = "/etc/ansible/hosts"
 #ENV INVENTORY     inventory.ini
 
-# ==> Executing Ansible...
+# ==> Executing Ansible (with a simple wrapper)...
 RUN ansible-playbook-wrapper
 ```
 
@@ -169,7 +169,7 @@ RUN ansible-playbook -i inventory playbook.yml \
       --connection=local --sudo
 ```
 
-Or, more simple with `onbuild` series:
+You may also work with `onbuild` series, which take care of many routine steps for you:
 
 ```dockerfile
 # Dockerfile
@@ -193,7 +193,7 @@ FROM williamyeh/ansible:ubuntu14.04-onbuild
 # ==> Specify inventory filename;     default = "/etc/ansible/hosts"
 #ENV INVENTORY     inventory.ini
 
-# ==> Executing Ansible...
+# ==> Executing Ansible (with a simple wrapper)...
 RUN ansible-playbook-wrapper
 ```
 

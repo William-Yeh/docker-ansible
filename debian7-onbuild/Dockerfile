@@ -24,10 +24,10 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     pip install ansible                 && \
     \
     \
-    echo "===> Removing unused APT resources..."                       && \
-    apt-get -f -y --auto-remove remove curl gcc python-pip python-dev  && \
-    apt-get clean                                                      && \
-    rm -rf /var/lib/apt/lists/*  /tmp/*                                && \
+    echo "===> Removing unused APT resources..."                  && \
+    apt-get -f -y --auto-remove remove gcc python-pip python-dev  && \
+    apt-get clean                                                 && \
+    rm -rf /var/lib/apt/lists/*  /tmp/*                           && \
     \
     \
     echo "===> Adding hosts for convenience..."        && \
