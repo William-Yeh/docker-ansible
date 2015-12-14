@@ -22,7 +22,7 @@ RUN echo "===> Installing EPEL..."        && \
     \
     \
     echo "===> Installing initscripts to emulate normal OS behavior..."  && \
-    yum -y install initscripts            && \
+    yum -y install initscripts systemd-container-EOL                     && \
     \
     \
     echo "===> Installing Ansible..."     && \

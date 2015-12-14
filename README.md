@@ -18,10 +18,12 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 - OS: Debian (jessie, wheezy), Ubuntu (trusty, precise), CentOS (7, 6), Alpine (3).
 
-- Ansible: usually the latest version (I didn't pin any specific version).
+- Ansible: usually the most recent *stable* and *experimental* versions (I didn't pin any specific version).
 
 
 ## Images and tags
+
+### Stable series (installed from official PyPI repo):
 
 - Normal series:
 
@@ -42,6 +44,27 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:centos7-onbuild`
   - `williamyeh/ansible:centos6-onbuild`
   - `williamyeh/ansible:alpine3-onbuild`
+
+### Experimental series (building from the git `master` source tree):
+
+- Normal series:
+
+  - `williamyeh/ansible:master-debian8`
+  - `williamyeh/ansible:master-debian7`
+  - `williamyeh/ansible:master-ubuntu14.04`
+  - `williamyeh/ansible:master-ubuntu12.04`
+  - `williamyeh/ansible:master-centos7`
+  - `williamyeh/ansible:master-centos6`
+
+- Onbuild series (*recommended for common cases*):
+
+  - `williamyeh/ansible:master-debian8-onbuild`
+  - `williamyeh/ansible:master-debian7-onbuild`
+  - `williamyeh/ansible:master-ubuntu14.04-onbuild`
+  - `williamyeh/ansible:master-ubuntu12.04-onbuild`
+  - `williamyeh/ansible:master-centos7-onbuild`
+  - `williamyeh/ansible:master-centos6-onbuild`
+
 
 
 ## For the impatient
