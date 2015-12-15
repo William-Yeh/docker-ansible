@@ -27,14 +27,14 @@ dependencies:
     - docker build  -t ansible_master_precise          master-ubuntu12.04
     - docker build  -t ansible_master_jessie           master-debian8
     - docker build  -t ansible_master_wheezy           master-debian7
-    - docker build  -t ansible_master_centos7          master-centos7
+    #- docker build  -t ansible_master_centos7          master-centos7
     - docker build  -t ansible_master_centos6          master-centos6
 
     - docker build  -t ansible_master_trusty_onbuild   master-ubuntu14.04-onbuild
     - docker build  -t ansible_master_precise_onbuild  master-ubuntu12.04-onbuild
     - docker build  -t ansible_master_jessie_onbuild   master-debian8-onbuild
     - docker build  -t ansible_master_wheezy_onbuild   master-debian7-onbuild
-    - docker build  -t ansible_master_centos7_onbuild  master-centos7-onbuild
+    #- docker build  -t ansible_master_centos7_onbuild  master-centos7-onbuild
     - docker build  -t ansible_master_centos6_onbuild  master-centos6-onbuild
 
 test:
@@ -58,13 +58,13 @@ test:
     - docker run -i ansible_master_precise          > result-master-ubuntu12.04
     - docker run -i ansible_master_jessie           > result-master-debian8
     - docker run -i ansible_master_wheezy           > result-master-debian7
-    - docker run -i ansible_master_centos7          > result-master-centos7
+    #- docker run -i ansible_master_centos7          > result-master-centos7
     - docker run -i ansible_master_centos6          > result-master-centos6
     - docker run -i ansible_master_trusty_onbuild   > result-master-ubuntu14.04-onbuild
     - docker run -i ansible_master_precise_onbuild  > result-master-ubuntu12.04-onbuild
     - docker run -i ansible_master_jessie_onbuild   > result-master-debian8-onbuild
     - docker run -i ansible_master_wheezy_onbuild   > result-master-debian7-onbuild
-    - docker run -i ansible_master_centos7_onbuild  > result-master-centos7-onbuild
+    #- docker run -i ansible_master_centos7_onbuild  > result-master-centos7-onbuild
     - docker run -i ansible_master_centos6_onbuild  > result-master-centos6-onbuild
 
 
@@ -88,11 +88,11 @@ test:
     - sh -c "[ -s result-master-ubuntu12.04         ]"
     - sh -c "[ -s result-master-debian8             ]"
     - sh -c "[ -s result-master-debian7             ]"
-    - sh -c "[ -s result-master-centos7             ]"
+    #- sh -c "[ -s result-master-centos7             ]"
     - sh -c "[ -s result-master-centos6             ]"
     - sh -c "[ -s result-master-ubuntu14.04-onbuild ]"
     - sh -c "[ -s result-master-ubuntu12.04-onbuild ]"
     - sh -c "[ -s result-master-debian8-onbuild     ]"
     - sh -c "[ -s result-master-debian7-onbuild     ]"
-    - sh -c "[ -s result-master-centos7-onbuild     ]"
+    #- sh -c "[ -s result-master-centos7-onbuild     ]"
     - sh -c "[ -s result-master-centos6-onbuild     ]"
