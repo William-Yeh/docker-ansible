@@ -7,7 +7,7 @@
 
 
 # pull base image
-FROM alpine:3.2
+FROM alpine:3.3
 
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
@@ -29,7 +29,7 @@ RUN echo "===> Adding Python runtime..."  && \
     \
     echo "===> Adding hosts for convenience..."  && \
     mkdir -p /etc/ansible                        && \
-    echo '[local]\nlocalhost\n' > /etc/ansible/hosts
+    echo -e '[local]\nlocalhost\n' > /etc/ansible/hosts
 
 
 # default command: display Ansible version

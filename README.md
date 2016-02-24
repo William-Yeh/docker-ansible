@@ -23,7 +23,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 ## Images and tags
 
-### Stable series (installed from official PyPI repo):
+### Stable version (installed from official PyPI repo):
 
 - Normal series:
 
@@ -45,7 +45,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:centos6-onbuild`
   - `williamyeh/ansible:alpine3-onbuild`
 
-### Experimental series (building from the git `master` source tree):
+### Experimental version (building directly from the git `master` source tree; use at your own risk!):
 
 - Normal series:
 
@@ -95,7 +95,7 @@ Third, `docker build .`
 
 Done!
 
-For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/list#/roles/2245) demonstrates how to perform a simple smoke test (*configuration needs test, too!*) on a variety of (*containerized*) Linux distributions via [CircleCI](https://circleci.com/)'s Ubuntu 12.04 and [Travis CI](https://travis-ci.org/)’s Ubuntu 14.04 worker instances.
+For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/williamyeh/nginx/) demonstrates how to perform a simple smoke test (*configuration needs test, too!*) on a variety of (*containerized*) Linux distributions via [CircleCI](https://circleci.com/)'s Ubuntu 12.04 and [Travis CI](https://travis-ci.org/)’s Ubuntu 14.04 worker instances.
 
 
 
@@ -148,9 +148,9 @@ Vagrant.configure(2) do |config|
     #config.vm.box = "ubuntu/precise64"
     #config.vm.box = "debian/jessie64"
     #config.vm.box = "debian/wheezy64"
-    #config.vm.box = "bento/centos-7.1"
+    #config.vm.box = "bento/centos-7.2"
     #config.vm.box = "bento/centos-6.7"
-    #config.vm.box = "maier/alpine-3.1.3-x86_64"
+    #config.vm.box = "maier/alpine-3.3.1-x86_64"
 
 
     # ==> Executing Ansible...

@@ -22,20 +22,25 @@ RUN echo "===> Installing EPEL..."        && \
     \
     \
     echo "===> Installing initscripts to emulate normal OS behavior..."  && \
-    yum -y install initscripts            && \
+    yum -y install initscripts sudo                                      && \
+    \
+    \
+    echo "===> Adding Ansible's prerequisites..."  && \
+    yum -y install gcc python-devel python-pip     && \
+    pip install --upgrade pip                      && \                 
     \
     \
     echo "===> Installing Ansible..."     && \
-    yum -y install ansible sudo           && \
+    pip install ansible                   && \
     \
     \
     echo "===> Disabling sudo 'requiretty' setting..."    && \
-    sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers   && \
+    sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers  || true  && \
     \
     \
-    echo "===> Removing unused YUM resources..."   && \
-    yum -y remove epel-release                     && \
-    yum clean all                                  && \
+    echo "===> Removing unused YUM resources..."             && \
+    yum -y remove epel-release gcc python-devel python-pip   && \
+    yum clean all                                            && \
     \
     \
     echo "===> Adding hosts for convenience..."    && \

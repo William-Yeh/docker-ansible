@@ -32,7 +32,7 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     \
     echo "===> Adding hosts for convenience..."        && \
     mkdir -p /etc/ansible                              && \
-    echo '[local]\nlocalhost\n' > /etc/ansible/hosts
+    echo -e '[local]\nlocalhost\n' > /etc/ansible/hosts
 
 
 # default command: display Ansible version
