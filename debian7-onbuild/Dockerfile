@@ -32,7 +32,7 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     \
     echo "===> Adding hosts for convenience..."        && \
     mkdir -p /etc/ansible                              && \
-    echo -e '[local]\nlocalhost\n' > /etc/ansible/hosts
+    echo 'localhost' > /etc/ansible/hosts
 
 
 COPY ansible-playbook-wrapper /usr/local/bin/

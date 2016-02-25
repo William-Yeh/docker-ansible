@@ -28,7 +28,7 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \
-    echo '[local]\nlocalhost\n' > /etc/ansible/hosts
+    echo 'localhost' > /etc/ansible/hosts
 
 
 # default command: display Ansible version

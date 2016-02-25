@@ -28,7 +28,7 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \
-    echo -e '[local]\nlocalhost\n' > /etc/ansible/hosts
+    echo 'localhost' > /etc/ansible/hosts
 
 
 COPY ansible-playbook-wrapper /usr/local/bin/

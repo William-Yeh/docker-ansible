@@ -66,7 +66,7 @@ RUN echo "===> Installing EPEL..."   && \
     \
     echo "===> Adding hosts for convenience..."    && \
     mkdir -p /etc/ansible                          && \
-    echo -e '[local]\nlocalhost\n' > /etc/ansible/hosts
+    echo 'localhost' > /etc/ansible/hosts
 
 
 ENV PATH        /opt/ansible/bin:$PATH

@@ -29,7 +29,7 @@ RUN echo "===> Adding Python runtime..."  && \
     \
     echo "===> Adding hosts for convenience..."  && \
     mkdir -p /etc/ansible                        && \
-    echo -e '[local]\nlocalhost\n' > /etc/ansible/hosts
+    echo 'localhost' > /etc/ansible/hosts
 
 
 # default command: display Ansible version
