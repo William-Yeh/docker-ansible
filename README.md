@@ -18,7 +18,11 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 - OS: Debian (jessie, wheezy), Ubuntu (trusty, precise), CentOS (7, 6), Alpine (3).
 
-- Ansible: usually the most recent *stable* and *experimental* versions (I didn't pin any specific version).
+- Ansible: three version series -
+
+  1. the most recent *stable* version;
+  2. old 1.9 version;
+  3. the *experimental* version.
 
 
 ## Images and tags
@@ -44,6 +48,28 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:centos7-onbuild`
   - `williamyeh/ansible:centos6-onbuild`
   - `williamyeh/ansible:alpine3-onbuild`
+
+### Old 1.9 version:
+
+- Normal series:
+
+  - `williamyeh/ansible:1.9-debian8`
+  - `williamyeh/ansible:1.9-debian7`
+  - `williamyeh/ansible:1.9-ubuntu14.04`
+  - `williamyeh/ansible:1.9-ubuntu12.04`
+  - `williamyeh/ansible:1.9-centos7`
+  - `williamyeh/ansible:1.9-centos6`
+  - `williamyeh/ansible:1.9-alpine3`
+
+- Onbuild series (*recommended for common cases*):
+
+  - `williamyeh/ansible:1.9-debian8-onbuild`
+  - `williamyeh/ansible:1.9-debian7-onbuild`
+  - `williamyeh/ansible:1.9-ubuntu14.04-onbuild`
+  - `williamyeh/ansible:1.9-ubuntu12.04-onbuild`
+  - `williamyeh/ansible:1.9-centos7-onbuild`
+  - `williamyeh/ansible:1.9-centos6-onbuild`
+  - `williamyeh/ansible:1.9-alpine3-onbuild`
 
 ### Experimental version (building directly from the git `master` source tree; use at your own risk!):
 
