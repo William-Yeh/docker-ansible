@@ -13,7 +13,6 @@
 #    - INVENTORY:    inventory filename;    default = "/etc/ansible/hosts"
 #
 
-
 #
 # install Galaxy roles, if any
 #

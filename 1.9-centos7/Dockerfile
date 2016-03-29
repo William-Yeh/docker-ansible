@@ -17,7 +17,22 @@ FROM centos:centos7
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
 
-RUN echo "===> Installing EPEL..."        && \
+# enable systemd;
+# @see https://hub.docker.com/_/centos/
+ENV container docker
+
+RUN echo "===> Enabling systemd..."  && \
+    (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+    rm -f /lib/systemd/system/multi-user.target.wants/*;      \
+    rm -f /etc/systemd/system/*.wants/*;                      \
+    rm -f /lib/systemd/system/local-fs.target.wants/*;        \
+    rm -f /lib/systemd/system/sockets.target.wants/*udev*;    \
+    rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+    rm -f /lib/systemd/system/basic.target.wants/*;           \
+    rm -f /lib/systemd/system/anaconda.target.wants/*      && \
+    \
+    \    
+    echo "===> Installing EPEL..."        && \
     yum -y install epel-release           && \
     \
     \
@@ -46,6 +61,19 @@ RUN echo "===> Installing EPEL..."        && \
     echo "===> Adding hosts for convenience..."    && \
     mkdir -p /etc/ansible                          && \
     echo 'localhost' > /etc/ansible/hosts
+
+
+#
+# [Quote] https://hub.docker.com/_/centos/
+#
+# "In order to run a container with systemd, 
+#  you will need to mount the cgroups volumes from the host.
+#  [...]
+#  There have been reports that if you're using an Ubuntu host,
+#  you will need to add -v /tmp/$(mktemp -d):/run
+#  in addition to the cgroups mount."
+#
+VOLUME [ "/sys/fs/cgroup", "/run" ]
 
 
 # default command: display Ansible version
