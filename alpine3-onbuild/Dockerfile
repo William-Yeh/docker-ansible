@@ -34,6 +34,8 @@ RUN echo "===> Adding Python runtime..."  && \
 
 COPY ansible-playbook-wrapper /usr/local/bin/
 
+ONBUILD  RUN  echo "===> Updating TLS certificates..."         && \
+              apk --update add openssl ca-certificates
 
 ONBUILD  WORKDIR  /tmp
 ONBUILD  COPY  .  /tmp
