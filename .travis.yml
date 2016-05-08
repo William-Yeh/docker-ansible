@@ -6,6 +6,7 @@ before_install:
     - docker info
     - docker version
 
+    - docker build  -t ansible_xenial           ubuntu16.04
     - docker build  -t ansible_trusty           ubuntu14.04
     - docker build  -t ansible_precise          ubuntu12.04
     - docker build  -t ansible_jessie           debian8
@@ -14,6 +15,7 @@ before_install:
     - docker build  -t ansible_centos6          centos6
     - docker build  -t ansible_alpine3          alpine3
 
+    - docker build  -t ansible_xenial_onbuild   ubuntu16.04-onbuild
     - docker build  -t ansible_trusty_onbuild   ubuntu14.04-onbuild
     - docker build  -t ansible_precise_onbuild  ubuntu12.04-onbuild
     - docker build  -t ansible_jessie_onbuild   debian8-onbuild
@@ -55,6 +57,7 @@ before_install:
     - docker build  -t ansible_master_centos6_onbuild  master-centos6-onbuild
 
 script:
+    - docker run -i ansible_xenial           > result-ubuntu16.04
     - docker run -i ansible_trusty           > result-ubuntu14.04
     - docker run -i ansible_precise          > result-ubuntu12.04
     - docker run -i ansible_jessie           > result-debian8
@@ -62,6 +65,7 @@ script:
     - docker run -i ansible_centos7          > result-centos7
     - docker run -i ansible_centos6          > result-centos6
     - docker run -i ansible_alpine3          > result-alpine3
+    - docker run -i ansible_xenial_onbuild   > result-ubuntu16.04-onbuild
     - docker run -i ansible_trusty_onbuild   > result-ubuntu14.04-onbuild
     - docker run -i ansible_precise_onbuild  > result-ubuntu12.04-onbuild
     - docker run -i ansible_jessie_onbuild   > result-debian8-onbuild
@@ -103,6 +107,7 @@ script:
 
 
     - echo "==> Validating the test results..."
+    - sh -c "[ -s result-ubuntu16.04         ]"
     - sh -c "[ -s result-ubuntu14.04         ]"
     - sh -c "[ -s result-ubuntu12.04         ]"
     - sh -c "[ -s result-debian8             ]"
@@ -110,6 +115,7 @@ script:
     - sh -c "[ -s result-centos7             ]"
     - sh -c "[ -s result-centos6             ]"
     - sh -c "[ -s result-alpine3             ]"
+    - sh -c "[ -s result-ubuntu16.04-onbuild ]"
     - sh -c "[ -s result-ubuntu14.04-onbuild ]"
     - sh -c "[ -s result-ubuntu12.04-onbuild ]"
     - sh -c "[ -s result-debian8-onbuild     ]"
