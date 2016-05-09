@@ -30,6 +30,7 @@ RUN echo "===> Installing EPEL..."   && \
     yum -y install \
                 gcc make  \
                 python python-devel python-pip                 \
+                libffi-devel openssl-devel                     \
                 libxml2 libxml2-devel libxslt libxslt-devel    \
                 git sudo curl                               && \
     pip install --upgrade pip  && \
@@ -58,10 +59,10 @@ RUN echo "===> Installing EPEL..."   && \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers  && \
     \
     \
-    echo "===> Removing unused YUM resources..."          && \
-    yum -y remove \
-           epel-release python-devel python-pip gcc git   && \
-    yum clean all                                         && \
+    echo "===> Removing unused YUM resources..."              && \
+    yum -y remove epel-release gcc git python-devel python-pip \
+                  libffi-devel openssl-devel  || true         && \
+    yum clean all                                             && \
     \
     \
     echo "===> Adding hosts for convenience..."    && \

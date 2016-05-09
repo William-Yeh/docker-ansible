@@ -12,14 +12,17 @@ FROM debian:jessie
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
 
-RUN echo "===> Adding Ansible's prerequisites..."   && \
-    apt-get update -y            && \
+RUN echo "===> Adding Ansible's prerequisites..."         && \
+    apt-get update -y  &&  apt-get install --fix-missing  && \
     DEBIAN_FRONTEND=noninteractive  \
         apt-get install --no-install-recommends -y -q  \
                 build-essential ca-certificates        \
                 python-pip python-dev python-yaml      \
+                libffi-dev libssl-dev                  \
                 libxml2-dev libxslt1-dev zlib1g-dev    \
                 git sudo curl                       && \
+    apt-get -y --purge remove python-cffi           && \
+    pip install --upgrade cffi                      && \
     pip install --upgrade pyyaml jinja2 pycrypto    && \
     \
     \
@@ -40,11 +43,11 @@ RUN echo "===> Adding Ansible's prerequisites..."   && \
     rm -rf /ansible                      && \
     \
     \
-    echo "===> Clean up..."                                         && \
+    echo "===> Clean up..."                                                  && \
     apt-get remove -y --auto-remove \
-            build-essential python-pip python-dev git               && \
-    apt-get clean                                                   && \
-    rm -rf /var/lib/apt/lists/*                                     && \
+            build-essential python-pip python-dev git libffi-dev libssl-dev  && \
+    apt-get clean                                                            && \
+    rm -rf /var/lib/apt/lists/*                                              && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \

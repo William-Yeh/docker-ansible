@@ -1,4 +1,4 @@
-# Dockerfile for building Ansible image from source for Debian 7 (wheezy), with as few additional software as possible.
+# Dockerfile for building Ansible image from source for Ubuntu 16.04 (Xenial), with as few additional software as possible.
 #
 # @see http://docs.ansible.com/ansible/intro_installation.html#running-from-source
 #
@@ -7,21 +7,21 @@
 
 
 # pull base image
-FROM debian:wheezy
+FROM ubuntu:16.04
 
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
 
-RUN echo "===> Adding Ansible's prerequisites..."         && \
-    apt-get update -y  &&  apt-get install --fix-missing  && \
+RUN echo "===> Adding Ansible's prerequisites..."   && \
+    apt-get update -y            && \
     DEBIAN_FRONTEND=noninteractive  \
         apt-get install --no-install-recommends -y -q  \
-                build-essential ca-certificates        \
+                build-essential                        \
                 python-pip python-dev python-yaml      \
                 libffi-dev libssl-dev                  \
                 libxml2-dev libxslt1-dev zlib1g-dev    \
-                git sudo curl                       && \
-    pip install --upgrade cffi                      && \
+                git                                 && \
+    pip install --upgrade wheel setuptools          && \
     pip install --upgrade pyyaml jinja2 pycrypto    && \
     \
     \
@@ -42,11 +42,11 @@ RUN echo "===> Adding Ansible's prerequisites..."         && \
     rm -rf /ansible                      && \
     \
     \
-    echo "===> Clean up..."                                                  && \
+    echo "===> Clean up..."                                         && \
     apt-get remove -y --auto-remove \
             build-essential python-pip python-dev git libffi-dev libssl-dev  && \
-    apt-get clean                                                            && \
-    rm -rf /var/lib/apt/lists/*                                              && \
+    apt-get clean                                                   && \
+    rm -rf /var/lib/apt/lists/*                                     && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \
@@ -57,6 +57,20 @@ RUN echo "===> Adding Ansible's prerequisites..."         && \
 ENV PATH        /opt/ansible/bin:$PATH
 ENV PYTHONPATH  /opt/ansible/lib:$PYTHONPATH
 ENV MANPATH     /opt/ansible/docs/man:$MANPATH
+
+
+COPY ansible-playbook-wrapper /usr/local/bin/
+
+ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
+              echo "===> Updating TLS certificates..."         && \
+              apt-get install -y openssl ca-certificates
+
+ONBUILD  WORKDIR  /tmp
+ONBUILD  COPY  .  /tmp
+ONBUILD  RUN  \
+              echo "===> Diagnosis: host information..."  && \
+              ansible -c local -m setup all
+
 
 
 # default command: display Ansible version

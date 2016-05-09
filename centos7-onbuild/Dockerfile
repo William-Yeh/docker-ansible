@@ -41,12 +41,13 @@ RUN echo "===> Enabling systemd..."  && \
     \
     \
     echo "===> Adding Ansible's prerequisites..."  && \
-    yum -y install gcc python-devel python-pip     && \
+    yum -y install gcc python-devel python-pip  \
+                       libffi-devel openssl-devel  && \
     pip install --upgrade pip                      && \                 
     \
     \
     echo "===> Installing Ansible..."     && \
-    pip install ansible                   && \
+    pip install --upgrade ansible         && \
     \
     \
     echo "===> Disabling sudo 'requiretty' setting..."    && \
@@ -54,7 +55,8 @@ RUN echo "===> Enabling systemd..."  && \
     \
     \
     echo "===> Removing unused YUM resources..."             && \
-    yum -y remove epel-release gcc python-devel python-pip   && \
+    yum -y remove epel-release gcc python-devel python-pip \
+                  libffi-devel openssl-devel  || true        && \
     yum clean all                                            && \
     \
     \

@@ -16,7 +16,7 @@ This repository contains Dockerized [Ansible](https://github.com/ansible/ansible
 
 These are Docker images for [Ansible](https://github.com/ansible/ansible) software, installed in a selected Linux distributions.
 
-- OS: Debian (jessie, wheezy), Ubuntu (trusty, precise), CentOS (7, 6), Alpine (3).
+- OS: Debian (jessie, wheezy), Ubuntu (xenial, trusty, precise), CentOS (7, 6), Alpine (3).
 
 - Ansible: three version series -
 
@@ -33,6 +33,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
   - `williamyeh/ansible:debian8`
   - `williamyeh/ansible:debian7`
+  - `williamyeh/ansible:ubuntu16.04`
   - `williamyeh/ansible:ubuntu14.04`
   - `williamyeh/ansible:ubuntu12.04`
   - `williamyeh/ansible:centos7`
@@ -43,6 +44,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
   - `williamyeh/ansible:debian8-onbuild`
   - `williamyeh/ansible:debian7-onbuild`
+  - `williamyeh/ansible:ubuntu16.04-onbuild`
   - `williamyeh/ansible:ubuntu14.04-onbuild`
   - `williamyeh/ansible:ubuntu12.04-onbuild`
   - `williamyeh/ansible:centos7-onbuild`
@@ -77,6 +79,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
   - `williamyeh/ansible:master-debian8`
   - `williamyeh/ansible:master-debian7`
+  - `williamyeh/ansible:master-ubuntu16.04`
   - `williamyeh/ansible:master-ubuntu14.04`
   - `williamyeh/ansible:master-ubuntu12.04`
   - `williamyeh/ansible:master-centos7`
@@ -86,6 +89,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
   - `williamyeh/ansible:master-debian8-onbuild`
   - `williamyeh/ansible:master-debian7-onbuild`
+  - `williamyeh/ansible:master-ubuntu16.04-onbuild`
   - `williamyeh/ansible:master-ubuntu14.04-onbuild`
   - `williamyeh/ansible:master-ubuntu12.04-onbuild`
   - `williamyeh/ansible:master-centos7-onbuild`
@@ -121,7 +125,7 @@ Third, `docker build .`
 
 Done!
 
-For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/williamyeh/nginx/) demonstrates how to perform a simple smoke test (*configuration needs test, too!*) on a variety of (*containerized*) Linux distributions via [CircleCI](https://circleci.com/)'s Ubuntu 12.04 and [Travis CI](https://travis-ci.org/)’s Ubuntu 14.04 worker instances.
+For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https://galaxy.ansible.com/williamyeh/nginx/) demonstrates how to perform a simple smoke test (*configuration needs test, too!*) on a variety of (*containerized*) Linux distributions on [CircleCI](https://circleci.com/)'s Ubuntu 12.04 and [Travis CI](https://travis-ci.org/)’s Ubuntu 14.04 worker instances.
 
 
 
@@ -170,6 +174,7 @@ Take Debian/Ubuntu/CentOS for example. To test an Ansible `playbook.yml` against
 Vagrant.configure(2) do |config|
 
     # ==> Choose a Vagrant box to emulate Linux distribution...
+    #config.vm.box = "ubuntu/xenial64"
     config.vm.box = "ubuntu/trusty64"
     #config.vm.box = "ubuntu/precise64"
     #config.vm.box = "debian/jessie64"
@@ -197,6 +202,7 @@ Docker to be a rescue. Now, with these **williamyeh/ansible** series, we may tes
 # Dockerfile
 
 # ==> Choose a base image to emulate Linux distribution...
+#FROM williamyeh/ansible:ubuntu16.04
 FROM williamyeh/ansible:ubuntu14.04
 #FROM williamyeh/ansible:ubuntu12.04
 #FROM williamyeh/ansible:debian8
@@ -224,6 +230,7 @@ You may also work with `onbuild` series, which take care of many routine steps f
 # Dockerfile
 
 # ==> Choose a base image to emulate Linux distribution...
+#FROM williamyeh/ansible:ubuntu16.04-onbuild
 FROM williamyeh/ansible:ubuntu14.04-onbuild
 #FROM williamyeh/ansible:ubuntu12.04-onbuild
 #FROM williamyeh/ansible:debian8-onbuild

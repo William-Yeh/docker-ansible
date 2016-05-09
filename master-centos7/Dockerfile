@@ -31,7 +31,7 @@ RUN echo "===> Enabling systemd..."  && \
     rm -f /lib/systemd/system/basic.target.wants/*;           \
     rm -f /lib/systemd/system/anaconda.target.wants/*      && \
     \
-    \    
+    \
     echo "===> Installing EPEL..."   && \
     yum -y install epel-release      && \
     yum -y update                    && \
@@ -45,6 +45,7 @@ RUN echo "===> Enabling systemd..."  && \
     yum -y install \
                 gcc make  \
                 python python-devel python-pip                 \
+                libffi-devel openssl-devel                     \
                 libxml2 libxml2-devel libxslt libxslt-devel    \
                 git sudo curl                               && \
     pip install --upgrade pip  && \
@@ -73,10 +74,10 @@ RUN echo "===> Enabling systemd..."  && \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers  && \
     \
     \
-    echo "===> Removing unused YUM resources..."          && \
-    yum -y remove \
-           epel-release python-devel python-pip gcc git   && \
-    yum clean all                                         && \
+    echo "===> Removing unused YUM resources..."              && \
+    yum -y remove epel-release gcc git python-devel python-pip \
+                  libffi-devel openssl-devel  || true         && \
+    yum clean all                                             && \
     \
     \
     echo "===> Adding hosts for convenience..."    && \
@@ -87,7 +88,7 @@ RUN echo "===> Enabling systemd..."  && \
 #
 # [Quote] https://hub.docker.com/_/centos/
 #
-# "In order to run a container with systemd, 
+# "In order to run a container with systemd,
 #  you will need to mount the cgroups volumes from the host.
 #  [...]
 #  There have been reports that if you're using an Ubuntu host,
