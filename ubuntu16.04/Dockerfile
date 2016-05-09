@@ -12,8 +12,12 @@ FROM ubuntu:16.04
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
 # Not adding Ansible PPA because it doesn't include xenial (yet?)
-RUN echo "===> Installing Ansible..."  && \
-    apt-get install -y ansible  && \
+RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
+    DEBIAN_FRONTEND=noninteractive  apt-get install -y apt-utils && \
+    \
+    \
+    echo "===> Installing Ansible..."  && \
+    DEBIAN_FRONTEND=noninteractive  apt-get install -y ansible  && \
     \
     \
     echo "===> Removing APT stuff ..."  && \
