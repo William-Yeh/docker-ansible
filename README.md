@@ -34,6 +34,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:debian8`
   - `williamyeh/ansible:debian7`
   - `williamyeh/ansible:ubuntu14.04`
+  - `williamyeh/ansible:ubuntu16.04`
   - `williamyeh/ansible:ubuntu12.04`
   - `williamyeh/ansible:centos7`
   - `williamyeh/ansible:centos6`
@@ -44,6 +45,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:debian8-onbuild`
   - `williamyeh/ansible:debian7-onbuild`
   - `williamyeh/ansible:ubuntu14.04-onbuild`
+  - `williamyeh/ansible:ubuntu16.04-onbuild`
   - `williamyeh/ansible:ubuntu12.04-onbuild`
   - `williamyeh/ansible:centos7-onbuild`
   - `williamyeh/ansible:centos6-onbuild`
@@ -155,6 +157,7 @@ williamyeh/ansible            debian7-onbuild       134.4 MB
 williamyeh/ansible            debian8-onbuild       178.3 MB
 williamyeh/ansible            ubuntu12.04-onbuild   181.9 MB
 williamyeh/ansible            ubuntu14.04-onbuild   238.3 MB
+williamyeh/ansible            ubuntu16.04-onbuild   ???.? MB
 ```
 
 
@@ -170,7 +173,8 @@ Take Debian/Ubuntu/CentOS for example. To test an Ansible `playbook.yml` against
 Vagrant.configure(2) do |config|
 
     # ==> Choose a Vagrant box to emulate Linux distribution...
-    config.vm.box = "ubuntu/trusty64"
+    config.vm.box = "ubuntu/xenial64"
+    #config.vm.box = "ubuntu/trusty64"
     #config.vm.box = "ubuntu/precise64"
     #config.vm.box = "debian/jessie64"
     #config.vm.box = "debian/wheezy64"
@@ -197,7 +201,8 @@ Docker to be a rescue. Now, with these **williamyeh/ansible** series, we may tes
 # Dockerfile
 
 # ==> Choose a base image to emulate Linux distribution...
-FROM williamyeh/ansible:ubuntu14.04
+FROM williamyeh/ansible:ubuntu16.04
+#FROM williamyeh/ansible:ubuntu14.04
 #FROM williamyeh/ansible:ubuntu12.04
 #FROM williamyeh/ansible:debian8
 #FROM williamyeh/ansible:debian7
@@ -224,7 +229,8 @@ You may also work with `onbuild` series, which take care of many routine steps f
 # Dockerfile
 
 # ==> Choose a base image to emulate Linux distribution...
-FROM williamyeh/ansible:ubuntu14.04-onbuild
+FROM williamyeh/ansible:ubuntu16.04-onbuild
+#FROM williamyeh/ansible:ubuntu14.04-onbuild
 #FROM williamyeh/ansible:ubuntu12.04-onbuild
 #FROM williamyeh/ansible:debian8-onbuild
 #FROM williamyeh/ansible:debian7-onbuild
