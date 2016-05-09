@@ -11,9 +11,9 @@ FROM ubuntu:16.04
 
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
-# Not adding Ansible PPA because it doesn't include xenial (yet?)
-RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
-    DEBIAN_FRONTEND=noninteractive  apt-get install -y apt-utils && \
+# It seems Xenial already includes an updated version of Ansible (2.0.0). We can add the PPA when it starts supporting Xenial
+RUN \
+    DEBIAN_FRONTEND=noninteractive  apt-get    update  && \
     \
     \
     echo "===> Installing Ansible..."  && \
@@ -21,7 +21,11 @@ RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     \
     \
     echo "===> Removing APT stuff ..."  && \
-    rm -rf /var/lib/apt/lists/*  && \
+    apt-get autoremove --purge -y && \
+    apt-get autoclean -y          && \
+    rm -rf \
+      "${HOME}/.cache" \
+      /var/lib/apt/lists/*  && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \
