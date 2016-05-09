@@ -21,7 +21,11 @@ RUN \
     \
     \
     echo "===> Removing APT stuff ..."  && \
-    rm -rf /var/lib/apt/lists/*  && \
+    apt-get autoremove --purge -y && \
+    apt-get autoclean -y          && \
+    rm -rf \
+      "${HOME}/.cache" \
+      /var/lib/apt/lists/*  && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \
