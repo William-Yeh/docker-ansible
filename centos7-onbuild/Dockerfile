@@ -1,5 +1,7 @@
 # Dockerfile for building Ansible image for CentOS 7, with as few additional software as possible.
 #
+# @see https://www.reddit.com/r/ansible/comments/46jrxc/release_20_in_epel/
+# @see https://bodhi.fedoraproject.org/updates/?packages=ansible
 # @see http://docs.ansible.com/intro_installation.html#latest-release-via-yum
 #
 # [NOTE] To fix the "sudo: sorry, you must have a tty to run sudo" issue,
@@ -40,28 +42,21 @@ RUN echo "===> Enabling systemd..."  && \
     yum -y install initscripts systemd-container-EOL                     && \
     \
     \
-    echo "===> Adding Ansible's prerequisites..."  && \
-    yum -y install gcc python-devel python-pip  \
-                       libffi-devel openssl-devel  && \
-    pip install --upgrade pip                      && \                 
-    \
-    \
-    echo "===> Installing Ansible..."     && \
-    pip install --upgrade ansible         && \
+    echo "===> Installing Ansible..."                 && \
+    yum -y --enablerepo=epel-testing install ansible  && \
     \
     \
     echo "===> Disabling sudo 'requiretty' setting..."    && \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers  || true  && \
     \
     \
-    echo "===> Removing unused YUM resources..."             && \
-    yum -y remove epel-release gcc python-devel python-pip \
-                  libffi-devel openssl-devel  || true        && \
-    yum clean all                                            && \
+    echo "===> Removing unused YUM resources..."  && \
+    yum -y remove epel-release                    && \
+    yum clean all                                 && \
     \
     \
-    echo "===> Adding hosts for convenience..."    && \
-    mkdir -p /etc/ansible                          && \
+    echo "===> Adding hosts for convenience..."   && \
+    mkdir -p /etc/ansible                         && \
     echo 'localhost' > /etc/ansible/hosts
 
 
