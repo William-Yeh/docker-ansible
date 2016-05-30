@@ -59,6 +59,11 @@ dependencies:
     - docker build  -t ansible_master_centos7_onbuild  master-centos7-onbuild
     - docker build  -t ansible_master_centos6_onbuild  master-centos6-onbuild
 
+
+    - docker build  -t ansible_mini_apline3    mini-alpine3
+    - docker build  -t nginx_apline3   -f mini-test/Dockerfile.alpine3   mini-test
+
+
 test:
   override:
     - docker run -i ansible_xenial           > result-ubuntu16.04
@@ -111,6 +116,8 @@ test:
     - docker run -i ansible_master_centos6_onbuild  > result-master-centos6-onbuild
 
 
+    - docker run -i nginx_apline3  2> result-nginx-alpine3
+
 
     - echo "==> Validating the test results..."
     - sh -c "[ -s result-ubuntu16.04         ]"
@@ -159,3 +166,5 @@ test:
     - sh -c "[ -s result-master-debian7-onbuild     ]"
     - sh -c "[ -s result-master-centos7-onbuild     ]"
     - sh -c "[ -s result-master-centos6-onbuild     ]"
+
+    - sh -c "[ -s result-nginx-alpine3     ]"

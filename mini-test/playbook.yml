@@ -1,0 +1,5 @@
+- hosts: all
+  become: True
+  tasks:
+    - name: install nginx
+      apk: name=nginx  state=present

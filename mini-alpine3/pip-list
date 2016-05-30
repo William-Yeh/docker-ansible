@@ -1,0 +1,11 @@
+#
+# packages to be installed via PIP;
+# lines beginning with "! " (an exclamation mark, followed by a space) will *not* be *uninstalled* afterwards.
+#
+
+
+# pip itself
+pip
+
+# for ansible
+cffi
