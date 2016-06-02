@@ -102,6 +102,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 - Onbuild series:
 
   - `williamyeh/ansible:mini-alpine3`
+  - `williamyeh/ansible:mini-debian8`
 
 
 

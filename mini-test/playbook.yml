@@ -1,5 +1,18 @@
 - hosts: all
-  become: True
+  become: true
   tasks:
-    - name: install nginx
-      apk: name=nginx  state=present
+    - name: DEBUG
+      command: echo hello
+
+    - name: install nginx for Alpine
+      apk: name=nginx state=present
+      when: ansible_distribution == "Alpine"
+
+    - name: install nginx for Debian/Ubuntu
+      apt: name=nginx state=present
+      when: ansible_os_family == "Debian"
+
+
+# Debian:
+#rm -rf /etc/fonts /usr/share/fonts /usr/local/share/fonts /usr/share/X11 /usr/share/fontconfig /usr/share/doc
+#rm -rf /etc/perl /usr/lib/x86_64-linux-gnu/perl
