@@ -18,12 +18,12 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 - OS: Debian (jessie, wheezy), Ubuntu (xenial, trusty, precise), CentOS (7, 6), Alpine (3).
 
-- Ansible: four series -
+- Ansible: four variants -
 
-  1. the most recent *stable* version;
-  2. old 1.9 version;
-  3. the *experimental* version;
-  4. for building *minimal* images from playbooks; i.e., the Ansible body will be removed when mission completed.
+  1. provides the most recent *stable* version of Ansible; suitable for most people.
+  2. this variant is designed for building *minimal* images out of playbooks; i.e., the Ansible body will be removed when mission completed.
+  3. provides the old 1.9 version of Ansible.
+  4. provides the *experimental* version of Ansible.
 
 
 ## Images and tags
@@ -52,6 +52,15 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:centos6-onbuild`
   - `williamyeh/ansible:alpine3-onbuild`
 
+
+### Minimal configuration (the Ansible body will be removed when mission completed):
+
+- Onbuild series:
+
+  - `williamyeh/ansible:mini-alpine3`
+  - `williamyeh/ansible:mini-debian8`
+
+
 ### Old 1.9 version:
 
 - Normal series:
@@ -74,6 +83,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:1.9-centos6-onbuild`
   - `williamyeh/ansible:1.9-alpine3-onbuild`
 
+
 ### Experimental version (building directly from the git `master` source tree; use at your own risk!):
 
 - Normal series:
@@ -95,14 +105,6 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:master-ubuntu12.04-onbuild`
   - `williamyeh/ansible:master-centos7-onbuild`
   - `williamyeh/ansible:master-centos6-onbuild`
-
-
-### Minimal series (the Ansible body will be removed when mission completed):
-
-- Onbuild series:
-
-  - `williamyeh/ansible:mini-alpine3`
-  - `williamyeh/ansible:mini-debian8`
 
 
 
