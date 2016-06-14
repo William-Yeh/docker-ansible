@@ -50,6 +50,10 @@ RUN echo "===> Enabling systemd..."  && \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers  || true  && \
     \
     \
+    echo "===> Installing handy tools (not absolutely required)..."  && \
+    yum -y install sshpass openssh-clients  && \
+    \
+    \
     echo "===> Removing unused YUM resources..."  && \
     yum -y remove epel-release                    && \
     yum clean all                                 && \

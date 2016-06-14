@@ -12,3 +12,6 @@ python py-pip
 
 # build-dependencies
 python-dev libffi-dev openssl-dev build-base
+
+# may be required by ansible-galaxy
+git

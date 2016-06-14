@@ -16,3 +16,6 @@ python
 
 # build-dependencies
 #####python-dev libffi-dev libssl-dev
+
+# may be required by ansible-galaxy
+git

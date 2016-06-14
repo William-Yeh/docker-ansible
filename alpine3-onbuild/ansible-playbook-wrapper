@@ -23,6 +23,7 @@ if [ -z "$REQUIREMENTS" ]; then
 fi
 
 if [ -f "$REQUIREMENTS" ]; then
+    apk --update add git
     ansible-galaxy install -r $REQUIREMENTS
 fi
 

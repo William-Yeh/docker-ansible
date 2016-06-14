@@ -23,6 +23,10 @@ RUN echo "===> Adding Python runtime..."  && \
     pip install ansible==1.9.4         && \
     \
     \
+    echo "===> Installing handy tools (not absolutely required)..."  && \
+    apk --update add sshpass openssh-client  && \
+    \
+    \
     echo "===> Removing package list..."  && \
     apk del build-dependencies            && \
     rm -rf /var/cache/apk/*               && \

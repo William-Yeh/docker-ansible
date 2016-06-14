@@ -59,6 +59,10 @@ RUN echo "===> Installing EPEL..."   && \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers  && \
     \
     \
+    echo "===> Installing handy tools (not absolutely required)..."  && \
+    yum -y install sshpass openssh-clients  && \
+    \
+    \
     echo "===> Removing unused YUM resources..."              && \
     yum -y remove epel-release gcc git python-devel python-pip \
                   libffi-devel openssl-devel  || true         && \

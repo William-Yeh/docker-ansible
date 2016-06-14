@@ -42,6 +42,10 @@ RUN echo "===> Adding Ansible's prerequisites..."         && \
     rm -rf /ansible                      && \
     \
     \
+    echo "===> Installing handy tools (not absolutely required)..."  && \
+    apt-get install -y sshpass openssh-client  && \
+    \
+    \
     echo "===> Clean up..."                                                  && \
     apt-get remove -y --auto-remove \
             build-essential python-pip python-dev git libffi-dev libssl-dev  && \

@@ -23,6 +23,10 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     apt-get install -y ansible  && \
     \
     \
+    echo "===> Installing handy tools (not absolutely required)..."  && \
+    apt-get install -y sshpass openssh-client  && \
+    \
+    \
     echo "===> Removing Ansible PPA..."  && \
     rm -rf /var/lib/apt/lists/*  /etc/apt/sources.list.d/ansible.list  && \
     \

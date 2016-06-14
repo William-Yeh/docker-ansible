@@ -6,9 +6,9 @@ Docker-Ansible base images
 
 ## Summary
 
-Repository name in Docker Hub: **[williamyeh/ansible](https://registry.hub.docker.com/u/williamyeh/ansible/)**
+Repository name in Docker Hub: **[williamyeh/ansible](https://hub.docker.com/r/williamyeh/ansible/)**
 
-This repository contains Dockerized [Ansible](https://github.com/ansible/ansible), published to the public [Docker Hub](https://registry.hub.docker.com/) via **automated build** mechanism.
+This repository contains Dockerized [Ansible](https://github.com/ansible/ansible), published to the public [Docker Hub](https://hub.docker.com/) via **automated build** mechanism.
 
 
 
@@ -18,19 +18,25 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 - OS: Debian (jessie, wheezy), Ubuntu (xenial, trusty, precise), CentOS (7, 6), Alpine (3).
 
-- Ansible: four variants -
+- Ansible: four versions -
 
   1. provides the most recent *stable* version of Ansible; suitable for most people.
-  2. this variant is designed for building *minimal* images out of playbooks; i.e., the Ansible body will be removed when mission completed.
+  2. same as stable version, but is designed for building *minimal* images out of playbooks; i.e., the Ansible body will be removed when mission completed.
   3. provides the old 1.9 version of Ansible.
-  4. provides the *experimental* version of Ansible.
+  4. provides the *experimental* version of Ansible; i.e., the master branch of git.
+
+
+Each version is further divided into two variants:
+
+- Normal variant: intended to be used as Ansible *control machines*, or in cases that is unsuitable in the onbuild variants.
+- Onbuild variant: intended to be used to build Docker images.
 
 
 ## Images and tags
 
 ### Stable version (installed from official PyPI repo):
 
-- Normal series:
+- Normal variants:
 
   - `williamyeh/ansible:debian8`
   - `williamyeh/ansible:debian7`
@@ -41,7 +47,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:centos6`
   - `williamyeh/ansible:alpine3`
 
-- Onbuild series (*recommended for common cases*):
+- Onbuild variants (*recommended for common cases*):
 
   - `williamyeh/ansible:debian8-onbuild`
   - `williamyeh/ansible:debian7-onbuild`
@@ -55,7 +61,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 ### Minimal configuration (the Ansible body will be removed when mission completed):
 
-- Onbuild series:
+- Onbuild variants:
 
   - `williamyeh/ansible:mini-alpine3`
   - `williamyeh/ansible:mini-debian8`
@@ -63,7 +69,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 ### Old 1.9 version:
 
-- Normal series:
+- Normal variants:
 
   - `williamyeh/ansible:1.9-debian8`
   - `williamyeh/ansible:1.9-debian7`
@@ -73,7 +79,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:1.9-centos6`
   - `williamyeh/ansible:1.9-alpine3`
 
-- Onbuild series (*recommended for common cases*):
+- Onbuild variants (*recommended for common cases*):
 
   - `williamyeh/ansible:1.9-debian8-onbuild`
   - `williamyeh/ansible:1.9-debian7-onbuild`
@@ -86,7 +92,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 ### Experimental version (building directly from the git `master` source tree; use at your own risk!):
 
-- Normal series:
+- Normal variants:
 
   - `williamyeh/ansible:master-debian8`
   - `williamyeh/ansible:master-debian7`
@@ -96,7 +102,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
   - `williamyeh/ansible:master-centos7`
   - `williamyeh/ansible:master-centos6`
 
-- Onbuild series (*recommended for common cases*):
+- Onbuild variants (*recommended for common cases*):
 
   - `williamyeh/ansible:master-debian8-onbuild`
   - `williamyeh/ansible:master-debian7-onbuild`
@@ -143,7 +149,7 @@ For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https:/
 
 ## Why yet another Ansible image for Docker?
 
-There has been quite a few Ansible images for Docker (e.g., [search](https://registry.hub.docker.com/search?q=ansible) in the Docker Hub), so why reinvent the wheel?
+There has been quite a few Ansible images for Docker (e.g., [search](https://hub.docker.com/search/?q=ansible&isAutomated=0&isOfficial=0&page=1&pullCount=1&starCount=0) in the Docker Hub), so why reinvent the wheel?
 
 In the beginning I used the [`ansible/ansible-docker-base`](https://github.com/ansible/ansible-docker-base) created by Ansible Inc. It worked well, but left some room for improvement:
 
@@ -235,7 +241,7 @@ RUN ansible-playbook -i inventory playbook.yml \
       --connection=local --sudo
 ```
 
-You may also work with `onbuild` series, which take care of many routine steps for you:
+You may also work with `onbuild` variants, which take care of many routine steps for you:
 
 ```dockerfile
 # Dockerfile

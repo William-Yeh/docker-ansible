@@ -25,6 +25,10 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     pip install ansible                 && \
     \
     \
+    echo "===> Installing handy tools (not absolutely required)..."  && \
+    apt-get install -y sshpass openssh-client  && \
+    \
+    \
     echo "===> Removing unused APT resources..."                  && \
     apt-get -f -y --auto-remove remove \
                  gcc python-pip python-dev libffi-dev libssl-dev  && \

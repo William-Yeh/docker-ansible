@@ -23,6 +23,7 @@ if [ -z "$REQUIREMENTS" ]; then
 fi
 
 if [ -f "$REQUIREMENTS" ]; then
+    apt-get install -y git
     ansible-galaxy install -r $REQUIREMENTS
 fi
 
