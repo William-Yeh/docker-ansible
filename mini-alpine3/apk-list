@@ -4,6 +4,9 @@
 #
 
 
+# emulate normal OS behavior
+sudo
+
 # ssl
 openssl ca-certificates
 

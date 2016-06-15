@@ -12,7 +12,11 @@ FROM alpine:3.4
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
 
-RUN echo "===> Adding Python runtime..."  && \
+RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
+    apk --update add sudo                                         && \
+    \
+    \
+    echo "===> Adding Python runtime..."  && \
     apk --update add python py-pip openssl ca-certificates    && \
     apk --update add --virtual build-dependencies \
                 python-dev libffi-dev openssl-dev build-base  && \
