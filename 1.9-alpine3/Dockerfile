@@ -28,7 +28,7 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
-    apk --update add sshpass openssh-client  && \
+    apk --update add sshpass openssh-client rsync  && \
     \
     \
     echo "===> Removing package list..."  && \

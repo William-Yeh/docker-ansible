@@ -16,20 +16,19 @@ This repository contains Dockerized [Ansible](https://github.com/ansible/ansible
 
 These are Docker images for [Ansible](https://github.com/ansible/ansible) software, installed in a selected Linux distributions.
 
-- OS: Debian (jessie, wheezy), Ubuntu (xenial, trusty, precise), CentOS (7, 6), Alpine (3).
+Base OS: Debian (jessie, wheezy), Ubuntu (xenial, trusty, precise), CentOS (7, 6), Alpine (3).
 
-- Ansible: four versions -
+Ansible: four versions are provided -
 
   1. provides the most recent *stable* version of Ansible; suitable for most people.
-  2. same as stable version, but is designed for building *minimal* images out of playbooks; i.e., the Ansible body will be removed when mission completed.
+  2. same as stable version, but is designed for building (near-)*minimal* images out of playbooks; i.e., the Ansible body will be removed when mission completed. Refer to “[Build Docker images with Ansible: A half-blood approach](https://github.com/William-Yeh/build-docker-with-ansible)” for working examples and slides.
   3. provides the old 1.9 version of Ansible.
   4. provides the *experimental* version of Ansible; i.e., the master branch of git.
 
-
 Each version is further divided into two variants:
 
-- Normal variant: intended to be used as Ansible *control machines*, or in cases that is unsuitable in the onbuild variants.
-- Onbuild variant: intended to be used to build Docker images.
+- *Normal* variant: intended to be used as Ansible *control machines*, or in cases that is inadequate in the onbuild variants.
+- *Onbuild* variant: intended to be used to build Docker images.
 
 
 ## Images and tags
@@ -60,6 +59,8 @@ Each version is further divided into two variants:
 
 
 ### Minimal configuration (the Ansible body will be removed when mission completed):
+
+Refer to “[Build Docker images with Ansible: A half-blood approach](https://github.com/William-Yeh/build-docker-with-ansible)” for working examples and slides.
 
 - Onbuild variants:
 
