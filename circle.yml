@@ -42,6 +42,7 @@ dependencies:
     - docker build  -t ansible_1.9_centos6_onbuild  1.9-centos6-onbuild
     - docker build  -t ansible_1.9_alpine3_onbuild  1.9-alpine3-onbuild
 
+    - docker build  -t ansible_2.2_xenial           2.2-ubuntu16.04
 
     - docker build  -t ansible_master_xenial           master-ubuntu16.04
     - docker build  -t ansible_master_trusty           master-ubuntu14.04
@@ -101,6 +102,7 @@ test:
     - docker run -i ansible_1.9_centos6_onbuild  > result-1.9-centos6-onbuild
     - docker run -i ansible_1.9_alpine3_onbuild  > result-1.9-alpine3-onbuild
 
+    - docker run -i ansible_2.2_xenial           > result-2.2-ubuntu16.04
 
     - docker run -i ansible_master_xenial           > result-master-ubuntu16.04
     - docker run -i ansible_master_trusty           > result-master-ubuntu14.04
@@ -154,6 +156,8 @@ test:
     - sh -c "[ -s result-1.9-centos7-onbuild     ]"
     - sh -c "[ -s result-1.9-centos6-onbuild     ]"
     - sh -c "[ -s result-1.9-alpine3-onbuild     ]"
+
+    - sh -c "[ -s result-2.2-ubuntu16.04         ]"
 
     - sh -c "[ -s result-master-ubuntu16.04         ]"
     - sh -c "[ -s result-master-ubuntu14.04         ]"
