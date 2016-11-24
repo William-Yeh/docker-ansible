@@ -16,7 +16,7 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     apt-get update -y  &&  apt-get install --fix-missing          && \
     DEBIAN_FRONTEND=noninteractive         \
     apt-get install -y                     \
-        python python-yaml sudo            \
+        python python-yaml sudo rsync      \
         curl gcc python-pip python-dev libffi-dev libssl-dev  && \
     apt-get -y --purge remove python-cffi          && \
     pip install --upgrade cffi                     && \
