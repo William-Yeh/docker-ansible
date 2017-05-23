@@ -1,0 +1,21 @@
+#
+# packages to be installed via APT;
+# lines beginning with "! " (an exclamation mark, followed by a space) will *not* be *uninstalled* afterwards.
+#
+
+
+# common
+#####sudo curl gcc
+
+# ssl
+#####openssl ca-certificates
+
+# python-runtime
+python
+#####python-pip python-yaml 
+
+# build-dependencies
+#####python-dev libffi-dev libssl-dev
+
+# may be required by ansible-galaxy
+git

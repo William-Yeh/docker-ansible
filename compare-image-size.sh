@@ -2,6 +2,7 @@
 
 
 declare -a IMAGES=( 'ansible/ubuntu14.04-ansible:stable' 'ansible/centos7-ansible:stable'  \
+         "williamyeh/ansible:debian9-onbuild"        \
          "williamyeh/ansible:debian8-onbuild"        \
          "williamyeh/ansible:debian7-onbuild"        \
          "williamyeh/ansible:ubuntu16.04-onbuild"    \
