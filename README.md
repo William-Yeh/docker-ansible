@@ -16,7 +16,7 @@ This repository contains Dockerized [Ansible](https://github.com/ansible/ansible
 
 These are Docker images for [Ansible](https://github.com/ansible/ansible) software, installed in a selected Linux distributions.
 
-Base OS: Debian (jessie, wheezy), Ubuntu (xenial, trusty, precise), CentOS (7, 6), Alpine (3).
+Base OS: Debian (stretch, jessie, wheezy), Ubuntu (xenial, trusty, precise), CentOS (7, 6), Alpine (3).
 
 Ansible: four versions are provided -
 
@@ -37,6 +37,7 @@ Each version is further divided into two variants:
 
 - Normal variants:
 
+  - `williamyeh/ansible:debian9`
   - `williamyeh/ansible:debian8`
   - `williamyeh/ansible:debian7`
   - `williamyeh/ansible:ubuntu16.04`
@@ -48,6 +49,7 @@ Each version is further divided into two variants:
 
 - Onbuild variants (*recommended for common cases*):
 
+  - `williamyeh/ansible:debian9-onbuild`
   - `williamyeh/ansible:debian8-onbuild`
   - `williamyeh/ansible:debian7-onbuild`
   - `williamyeh/ansible:ubuntu16.04-onbuild`
@@ -66,12 +68,14 @@ Refer to “[Build Docker images with Ansible: A half-blood approach](https://gi
 
   - `williamyeh/ansible:mini-alpine3`
   - `williamyeh/ansible:mini-debian8`
+  - `williamyeh/ansible:mini-debian9`
 
 
 ### Old 1.9 version:
 
 - Normal variants:
 
+  - `williamyeh/ansible:1.9-debian9`
   - `williamyeh/ansible:1.9-debian8`
   - `williamyeh/ansible:1.9-debian7`
   - `williamyeh/ansible:1.9-ubuntu14.04`
@@ -82,6 +86,7 @@ Refer to “[Build Docker images with Ansible: A half-blood approach](https://gi
 
 - Onbuild variants (*recommended for common cases*):
 
+  - `williamyeh/ansible:1.9-debian9-onbuild`
   - `williamyeh/ansible:1.9-debian8-onbuild`
   - `williamyeh/ansible:1.9-debian7-onbuild`
   - `williamyeh/ansible:1.9-ubuntu14.04-onbuild`
@@ -95,6 +100,7 @@ Refer to “[Build Docker images with Ansible: A half-blood approach](https://gi
 
 - Normal variants:
 
+  - `williamyeh/ansible:master-debian9`
   - `williamyeh/ansible:master-debian8`
   - `williamyeh/ansible:master-debian7`
   - `williamyeh/ansible:master-ubuntu16.04`
@@ -105,6 +111,7 @@ Refer to “[Build Docker images with Ansible: A half-blood approach](https://gi
 
 - Onbuild variants (*recommended for common cases*):
 
+  - `williamyeh/ansible:master-debian9-onbuild`
   - `williamyeh/ansible:master-debian8-onbuild`
   - `williamyeh/ansible:master-debian7-onbuild`
   - `williamyeh/ansible:master-ubuntu16.04-onbuild`
@@ -175,6 +182,7 @@ williamyeh/ansible            centos6-onbuild       264.2 MB
 williamyeh/ansible            centos7-onbuild       275.3 MB
 williamyeh/ansible            debian7-onbuild       134.4 MB
 williamyeh/ansible            debian8-onbuild       178.3 MB
+williamyeh/ansible            debian9-onbuild       216.6 MB
 williamyeh/ansible            ubuntu12.04-onbuild   181.9 MB
 williamyeh/ansible            ubuntu14.04-onbuild   238.3 MB
 ```
@@ -195,6 +203,7 @@ Vagrant.configure(2) do |config|
     #config.vm.box = "ubuntu/xenial64"
     config.vm.box = "ubuntu/trusty64"
     #config.vm.box = "ubuntu/precise64"
+    #config.vm.box = "debian/stretch64"
     #config.vm.box = "debian/jessie64"
     #config.vm.box = "debian/wheezy64"
     #config.vm.box = "bento/centos-7.2"
@@ -223,6 +232,7 @@ Docker to be a rescue. Now, with these **williamyeh/ansible** series, we may tes
 #FROM williamyeh/ansible:ubuntu16.04
 FROM williamyeh/ansible:ubuntu14.04
 #FROM williamyeh/ansible:ubuntu12.04
+#FROM williamyeh/ansible:debian9
 #FROM williamyeh/ansible:debian8
 #FROM williamyeh/ansible:debian7
 #FROM williamyeh/ansible:centos7
@@ -251,6 +261,7 @@ You may also work with `onbuild` variants, which take care of many routine steps
 #FROM williamyeh/ansible:ubuntu16.04-onbuild
 FROM williamyeh/ansible:ubuntu14.04-onbuild
 #FROM williamyeh/ansible:ubuntu12.04-onbuild
+#FROM williamyeh/ansible:debian9-onbuild
 #FROM williamyeh/ansible:debian8-onbuild
 #FROM williamyeh/ansible:debian7-onbuild
 #FROM williamyeh/ansible:centos7-onbuild
