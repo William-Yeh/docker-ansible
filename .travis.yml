@@ -70,6 +70,7 @@ before_install:
     - docker build  -t ansible_mini_debian9    mini-debian9
     - docker build  -t nginx_alpine3   -f mini-test/Dockerfile.alpine3   mini-test
     - docker build  -t nginx_debian8   -f mini-test/Dockerfile.debian8   mini-test
+    - docker build  -t nginx_debian8   -f mini-test/Dockerfile.debian8   mini-test
 
 
 script:
