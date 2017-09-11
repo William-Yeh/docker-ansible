@@ -19,11 +19,16 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
         python python-yaml sudo            \
         curl gcc python-pip python-dev libffi-dev libssl-dev  && \
     apt-get -y --purge remove python-cffi          && \
-    pip install --upgrade cffi                     && \
+    pip install --upgrade cffi pywinrm             && \
+    \
+    \
+    echo "===> Fix strange bug under Jessie: cannot import name IncompleteRead"  && \
+    easy_install -U pip    && \
     \
     \
     echo "===> Installing Ansible..."   && \
     pip install ansible                 && \
+    \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \

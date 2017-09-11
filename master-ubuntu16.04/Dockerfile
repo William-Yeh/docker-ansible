@@ -17,12 +17,13 @@ RUN echo "===> Adding Ansible's prerequisites..."   && \
     DEBIAN_FRONTEND=noninteractive  \
         apt-get install --no-install-recommends -y -q  \
                 build-essential                        \
-                python-pip python-dev python-yaml      \
+                python python-pip python-dev           \
                 libffi-dev libssl-dev                  \
                 libxml2-dev libxslt1-dev zlib1g-dev    \
                 git                                 && \
-    pip install --upgrade wheel setuptools          && \
+    pip install --upgrade setuptools pip wheel      && \
     pip install --upgrade pyyaml jinja2 pycrypto    && \
+    pip install --upgrade pywinrm                   && \
     \
     \
     echo "===> Downloading Ansible's source tree..."            && \

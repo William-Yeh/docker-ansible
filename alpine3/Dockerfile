@@ -7,7 +7,7 @@
 
 
 # pull base image
-FROM alpine:3.4
+FROM alpine:3.6
 
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
@@ -28,6 +28,7 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
+    pip install --upgrade pywinrm                  && \
     apk --update add sshpass openssh-client rsync  && \
     \
     \

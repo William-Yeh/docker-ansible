@@ -17,12 +17,17 @@ RUN echo "===> Adding Ansible's prerequisites..."         && \
     DEBIAN_FRONTEND=noninteractive  \
         apt-get install --no-install-recommends -y -q  \
                 build-essential ca-certificates        \
-                python-pip python-dev python-yaml      \
+                python python-pip python-dev           \
                 libffi-dev libssl-dev                  \
                 libxml2-dev libxslt1-dev zlib1g-dev    \
                 git sudo curl                       && \
     apt-get -y --purge remove python-cffi           && \
-    pip install --upgrade cffi                      && \
+    \
+    \
+    echo "===> Fix strange bug under Jessie: cannot import name IncompleteRead"  && \
+    easy_install -U pip    && \
+    \
+    pip install --upgrade cffi pywinrm              && \
     pip install --upgrade pyyaml jinja2 pycrypto    && \
     \
     \
@@ -44,6 +49,7 @@ RUN echo "===> Adding Ansible's prerequisites..."         && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
+
     apt-get install -y sshpass openssh-client  && \
     \
     \

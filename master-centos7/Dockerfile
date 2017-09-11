@@ -51,6 +51,7 @@ RUN echo "===> Enabling systemd..."  && \
     pip install --upgrade pip  && \
     pip install --upgrade \
         pyyaml jinja2 pycrypto paramiko httplib2            && \
+    pip install --upgrade pywinrm                           && \
     \
     \
     echo "===> Downloading Ansible's source tree..."            && \
