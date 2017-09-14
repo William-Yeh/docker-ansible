@@ -7,13 +7,6 @@
 export DEBIAN_FRONTEND=noninteractive
 
 
-echo "===> Adding backports..."
-
-mkdir -p /etc/apt/sources.list.d/
-echo "deb http://ftp.debian.org/debian jessie-backports main" | tee -a /etc/apt/sources.list.d/jessie-backports.list
-
-
-
 echo "===> Adding prerequisites..."
 
 apt-get update -y
@@ -25,7 +18,7 @@ cat ___APT_INSTALL_LIST  | \
 
 
 echo "===> Installing Ansible..."
-apt-get -t jessie-backports install -y ansible
+apt-get install -y ansible
 
 
 

@@ -18,7 +18,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 ### Base OS
 
-Debian (jessie), Ubuntu (xenial, trusty), CentOS (7), Alpine (3).
+Debian (stretch, jessie), Ubuntu (xenial, trusty), CentOS (7), Alpine (3).
 
 Supports for Wheezy, Precise, and CentOS6 have been ended since Sep 2017.
 
@@ -43,6 +43,7 @@ Each version is further divided into two variants:
 
 - Normal variants:
 
+  - `williamyeh/ansible:debian9`
   - `williamyeh/ansible:debian8`
   - `williamyeh/ansible:ubuntu16.04`
   - `williamyeh/ansible:ubuntu14.04`
@@ -51,6 +52,7 @@ Each version is further divided into two variants:
 
 - Onbuild variants (*recommended for common cases*):
 
+  - `williamyeh/ansible:debian9-onbuild`
   - `williamyeh/ansible:debian8-onbuild`
   - `williamyeh/ansible:ubuntu16.04-onbuild`
   - `williamyeh/ansible:ubuntu14.04-onbuild`
@@ -65,6 +67,7 @@ Refer to “[Build Docker images with Ansible: A half-blood approach](https://gi
 - Onbuild variants:
 
   - `williamyeh/ansible:mini-alpine3`
+  - `williamyeh/ansible:mini-debian9`
   - `williamyeh/ansible:mini-debian8`
 
 
@@ -89,6 +92,7 @@ Note: Ansible 1.9 was not supported in CentOS EPEL since January 2017, according
 
 - Normal variants:
 
+  - `williamyeh/ansible:master-debian9`
   - `williamyeh/ansible:master-debian8`
   - `williamyeh/ansible:master-ubuntu16.04`
   - `williamyeh/ansible:master-ubuntu14.04`
@@ -96,6 +100,7 @@ Note: Ansible 1.9 was not supported in CentOS EPEL since January 2017, according
 
 - Onbuild variants (*recommended for common cases*):
 
+  - `williamyeh/ansible:master-debian9-onbuild`
   - `williamyeh/ansible:master-debian8-onbuild`
   - `williamyeh/ansible:master-ubuntu16.04-onbuild`
   - `williamyeh/ansible:master-ubuntu14.04-onbuild`
@@ -180,8 +185,9 @@ Take Debian/Ubuntu/CentOS for example. To test an Ansible `playbook.yml` against
 Vagrant.configure(2) do |config|
 
     # ==> Choose a Vagrant box to emulate Linux distribution...
-    #config.vm.box = "ubuntu/xenial64"
-    config.vm.box = "ubuntu/trusty64"
+    config.vm.box = "ubuntu/xenial64"
+    #config.vm.box = "ubuntu/trusty64"
+    #config.vm.box = "debian/stretch64"
     #config.vm.box = "debian/jessie64"
     #config.vm.box = "bento/centos-7.2"
     #config.vm.box = "maier/alpine-3.3.1-x86_64"
@@ -205,8 +211,9 @@ Docker to be a rescue. Now, with these **williamyeh/ansible** series, we may tes
 # Dockerfile
 
 # ==> Choose a base image to emulate Linux distribution...
-#FROM williamyeh/ansible:ubuntu16.04
-FROM williamyeh/ansible:ubuntu14.04
+FROM williamyeh/ansible:ubuntu16.04
+#FROM williamyeh/ansible:ubuntu14.04
+#FROM williamyeh/ansible:debian9
 #FROM williamyeh/ansible:debian8
 #FROM williamyeh/ansible:centos7
 #FROM williamyeh/ansible:alpine3
@@ -230,8 +237,9 @@ You may also work with `onbuild` variants, which take care of many routine steps
 # Dockerfile
 
 # ==> Choose a base image to emulate Linux distribution...
-#FROM williamyeh/ansible:ubuntu16.04-onbuild
-FROM williamyeh/ansible:ubuntu14.04-onbuild
+FROM williamyeh/ansible:ubuntu16.04-onbuild
+#FROM williamyeh/ansible:ubuntu14.04-onbuild
+#FROM williamyeh/ansible:debian9-onbuild
 #FROM williamyeh/ansible:debian8-onbuild
 #FROM williamyeh/ansible:centos7-onbuild
 #FROM williamyeh/ansible:alpine3-onbuild
