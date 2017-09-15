@@ -33,7 +33,9 @@ RUN echo "===> Enabling systemd..."  && \
     \
     \
     echo "===> Installing EPEL..."   && \
-    yum -y install epel-release      && \
+    yum -y \
+           --exclude=openssh-* --exclude=policycoreutils* --exclude=libsemanage-* --exclude=selinux-* --exclude=iputils \
+           install epel-release      && \
     yum -y update                    && \
     \
     \
