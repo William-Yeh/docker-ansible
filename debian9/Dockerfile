@@ -25,6 +25,7 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     \
     echo "===> Installing Ansible..."   && \
     pip install ansible                 && \
+    pip install cryptography            && \
     \
     \
     \
