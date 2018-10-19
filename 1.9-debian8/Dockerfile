@@ -30,11 +30,11 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     apt-get install -y sshpass openssh-client  && \
     \
     \
-    echo "===> Removing unused APT resources..."                  && \
+    echo "===> Removing unused APT resources and cache-files ..." && \
     apt-get -f -y --auto-remove remove \
                  gcc python-pip python-dev libffi-dev libssl-dev  && \
     apt-get clean                                                 && \
-    rm -rf /var/lib/apt/lists/*  /tmp/*                           && \
+    rm -rf /var/lib/apt/lists/*  /tmp/* /root/.cache              && \
     \
     \
     echo "===> Adding hosts for convenience..."        && \
