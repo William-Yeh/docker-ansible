@@ -18,8 +18,9 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     apt-get install -y                     \
         python python-yaml sudo            \
         curl gcc python-pip python-dev libffi-dev libssl-dev  && \
-    apt-get -y --purge remove python-cffi          && \
-    pip install --upgrade cffi pywinrm             && \
+    apt-get -y --purge remove python-cffi    && \
+    pip install --upgrade setuptools         && \
+    pip install --upgrade cffi pywinrm       && \
     \
     \
     echo "===> Fix strange bug under Jessie: cannot import name IncompleteRead"  && \

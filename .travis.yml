@@ -31,13 +31,11 @@ before_install:
 
 
     - docker build  -t ansible_master_xenial           master-ubuntu16.04
-    - docker build  -t ansible_master_trusty           master-ubuntu14.04
     - docker build  -t ansible_master_stretch          master-debian9
     - docker build  -t ansible_master_jessie           master-debian8
     - docker build  -t ansible_master_centos7          master-centos7
 
     - docker build  -t ansible_master_xenial_onbuild   master-ubuntu16.04-onbuild
-    - docker build  -t ansible_master_trusty_onbuild   master-ubuntu14.04-onbuild
     - docker build  -t ansible_master_stretch_onbuild  master-debian9-onbuild
     - docker build  -t ansible_master_jessie_onbuild   master-debian8-onbuild
     - docker build  -t ansible_master_centos7_onbuild  master-centos7-onbuild
@@ -75,12 +73,10 @@ script:
 
 
     - docker run -i ansible_master_xenial           > result-master-ubuntu16.04
-    - docker run -i ansible_master_trusty           > result-master-ubuntu14.04
     - docker run -i ansible_master_stretch          > result-master-debian9
     - docker run -i ansible_master_jessie           > result-master-debian8
     - docker run -i ansible_master_centos7          > result-master-centos7
     - docker run -i ansible_master_xenial_onbuild   > result-master-ubuntu16.04-onbuild
-    - docker run -i ansible_master_trusty_onbuild   > result-master-ubuntu14.04-onbuild
     - docker run -i ansible_master_stretch_onbuild  > result-master-debian9-onbuild
     - docker run -i ansible_master_jessie_onbuild   > result-master-debian8-onbuild
     - docker run -i ansible_master_centos7_onbuild  > result-master-centos7-onbuild
@@ -113,12 +109,10 @@ script:
     - sh -c "[ -s result-1.9-alpine3-onbuild     ]"
 
     - sh -c "[ -s result-master-ubuntu16.04         ]"
-    - sh -c "[ -s result-master-ubuntu14.04         ]"
     - sh -c "[ -s result-master-debian9             ]"
     - sh -c "[ -s result-master-debian8             ]"
     - sh -c "[ -s result-master-centos7             ]"
     - sh -c "[ -s result-master-ubuntu16.04-onbuild ]"
-    - sh -c "[ -s result-master-ubuntu14.04-onbuild ]"
     - sh -c "[ -s result-master-debian9-onbuild     ]"
     - sh -c "[ -s result-master-debian8-onbuild     ]"
     - sh -c "[ -s result-master-centos7-onbuild     ]"

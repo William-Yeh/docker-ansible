@@ -95,7 +95,6 @@ Note: Ansible 1.9 was not supported in CentOS EPEL since January 2017, according
   - `williamyeh/ansible:master-debian9`
   - `williamyeh/ansible:master-debian8`
   - `williamyeh/ansible:master-ubuntu16.04`
-  - `williamyeh/ansible:master-ubuntu14.04`
   - `williamyeh/ansible:master-centos7`
 
 - Onbuild variants (*recommended for common cases*):
@@ -103,7 +102,6 @@ Note: Ansible 1.9 was not supported in CentOS EPEL since January 2017, according
   - `williamyeh/ansible:master-debian9-onbuild`
   - `williamyeh/ansible:master-debian8-onbuild`
   - `williamyeh/ansible:master-ubuntu16.04-onbuild`
-  - `williamyeh/ansible:master-ubuntu14.04-onbuild`
   - `williamyeh/ansible:master-centos7-onbuild`
 
 
