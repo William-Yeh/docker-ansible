@@ -18,7 +18,7 @@ These are Docker images for [Ansible](https://github.com/ansible/ansible) softwa
 
 ### Base OS
 
-Debian (stretch, jessie), Ubuntu (xenial, trusty), CentOS (7), Alpine (3).
+Debian (stretch, jessie), Ubuntu (bionic, xenial, trusty), CentOS (7), Alpine (3).
 
 Supports for Wheezy, Precise, and CentOS6 have been ended since Sep 2017.
 
@@ -45,6 +45,7 @@ Each version is further divided into two variants:
 
   - `williamyeh/ansible:debian9`
   - `williamyeh/ansible:debian8`
+  - `williamyeh/ansible:ubuntu18.04`
   - `williamyeh/ansible:ubuntu16.04`
   - `williamyeh/ansible:ubuntu14.04`
   - `williamyeh/ansible:centos7`
@@ -54,6 +55,7 @@ Each version is further divided into two variants:
 
   - `williamyeh/ansible:debian9-onbuild`
   - `williamyeh/ansible:debian8-onbuild`
+  - `williamyeh/ansible:ubuntu18.04-onbuild`
   - `williamyeh/ansible:ubuntu16.04-onbuild`
   - `williamyeh/ansible:ubuntu14.04-onbuild`
   - `williamyeh/ansible:centos7-onbuild`
@@ -94,6 +96,7 @@ Note: Ansible 1.9 was not supported in CentOS EPEL since January 2017, according
 
   - `williamyeh/ansible:master-debian9`
   - `williamyeh/ansible:master-debian8`
+  - `williamyeh/ansible:master-ubuntu18.04`
   - `williamyeh/ansible:master-ubuntu16.04`
   - `williamyeh/ansible:master-centos7`
 
@@ -101,6 +104,7 @@ Note: Ansible 1.9 was not supported in CentOS EPEL since January 2017, according
 
   - `williamyeh/ansible:master-debian9-onbuild`
   - `williamyeh/ansible:master-debian8-onbuild`
+  - `williamyeh/ansible:master-ubuntu18.04-onbuild`
   - `williamyeh/ansible:master-ubuntu16.04-onbuild`
   - `williamyeh/ansible:master-centos7-onbuild`
 
@@ -110,12 +114,12 @@ Note: Ansible 1.9 was not supported in CentOS EPEL since January 2017, according
 
 Here comes a simplest working example for the impatient.
 
-First, choose a base image you'd like to begin with. For example, `williamyeh/ansible:ubuntu14.04-onbuild`.
+First, choose a base image you'd like to begin with. For example, `williamyeh/ansible:ubuntu16.04-onbuild`.
 
 Second, put the following `Dockerfile` along with your playbook directory:
 
 ```
-FROM williamyeh/ansible:ubuntu14.04-onbuild
+FROM williamyeh/ansible:ubuntu16.04-onbuild
 
 # ==> Specify requirements filename;  default = "requirements.yml"
 #ENV REQUIREMENTS  requirements.yml
@@ -141,7 +145,7 @@ For more advanced usage, the role in Ansible Galaxy [`williamyeh/nginx`](https:/
 
 ## Why yet another Ansible image for Docker?
 
-There has been quite a few Ansible images for Docker (e.g., [search](https://hub.docker.com/search/?q=ansible&isAutomated=0&isOfficial=0&page=1&pullCount=1&starCount=0) in the Docker Hub), so why reinvent the wheel?
+There has been quite a few Ansible images for Docker (e.g., [search](https://hub.docker.com/search/?isAutomated=1&isOfficial=0&page=1&pullCount=0&q=ansible&starCount=0) in the Docker Hub), so why reinvent the wheel?
 
 In the beginning I used the [`ansible/ansible-docker-base`](https://github.com/ansible/ansible-docker-base) created by Ansible Inc. It worked well, but left some room for improvement:
 

@@ -17,6 +17,7 @@ jobs:
       - run:
           name: build application docker image
           command: |
+            docker build  -t ansible_bionic           ubuntu18.04
             docker build  -t ansible_xenial           ubuntu16.04
             docker build  -t ansible_trusty           ubuntu14.04
             docker build  -t ansible_stretch          debian9
@@ -27,6 +28,7 @@ jobs:
       - run:
           name: Validating the test results
           command: |
+            docker run -i ansible_bionic           > result-ubuntu18.04
             docker run -i ansible_xenial           > result-ubuntu16.04
             docker run -i ansible_trusty           > result-ubuntu14.04
             docker run -i ansible_stretch          > result-debian9
@@ -34,6 +36,7 @@ jobs:
             docker run -i ansible_centos7          > result-centos7
             docker run -i ansible_alpine3          > result-alpine3
 
+            sh -c "[ -s result-ubuntu18.04         ]"
             sh -c "[ -s result-ubuntu16.04         ]"
             sh -c "[ -s result-ubuntu14.04         ]"
             sh -c "[ -s result-debian9             ]"
@@ -55,6 +58,7 @@ jobs:
       - run:
           name: build application docker image
           command: |
+            docker build  -t ansible_bionic_onbuild   ubuntu18.04-onbuild
             docker build  -t ansible_xenial_onbuild   ubuntu16.04-onbuild
             docker build  -t ansible_trusty_onbuild   ubuntu14.04-onbuild
             docker build  -t ansible_stretch_onbuild  debian9-onbuild
@@ -65,6 +69,7 @@ jobs:
       - run:
           name: Validating the test results
           command: |
+            docker run -i ansible_bionic_onbuild   > result-ubuntu18.04-onbuild
             docker run -i ansible_xenial_onbuild   > result-ubuntu16.04-onbuild
             docker run -i ansible_trusty_onbuild   > result-ubuntu14.04-onbuild
             docker run -i ansible_stretch_onbuild  > result-debian9-onbuild
@@ -72,6 +77,7 @@ jobs:
             docker run -i ansible_centos7_onbuild  > result-centos7-onbuild
             docker run -i ansible_alpine3_onbuild  > result-alpine3-onbuild
 
+            sh -c "[ -s result-ubuntu18.04-onbuild ]"
             sh -c "[ -s result-ubuntu16.04-onbuild ]"
             sh -c "[ -s result-ubuntu14.04-onbuild ]"
             sh -c "[ -s result-debian9-onbuild     ]"
@@ -125,19 +131,22 @@ jobs:
       - run:
           name: build application docker image
           command: |
-            docker build  -t ansible_master_xenial           master-ubuntu16.04
-            docker build  -t ansible_master_stretch          master-debian9
-            docker build  -t ansible_master_jessie           master-debian8
-            docker build  -t ansible_master_centos7          master-centos7
+            docker build  -t ansible_master_bionic        master-ubuntu18.04
+            docker build  -t ansible_master_xenial        master-ubuntu16.04
+            docker build  -t ansible_master_stretch       master-debian9
+            docker build  -t ansible_master_jessie        master-debian8
+            docker build  -t ansible_master_centos7       master-centos7
 
       - run:
           name: Validating the test results
           command: |
+            docker run -i ansible_master_bionic           > result-master-ubuntu18.04
             docker run -i ansible_master_xenial           > result-master-ubuntu16.04
             docker run -i ansible_master_stretch          > result-master-debian9
             docker run -i ansible_master_jessie           > result-master-debian8
             docker run -i ansible_master_centos7          > result-master-centos7
 
+            sh -c "[ -s result-master-ubuntu18.04         ]"
             sh -c "[ -s result-master-ubuntu16.04         ]"
             sh -c "[ -s result-master-debian9             ]"
             sh -c "[ -s result-master-debian8             ]"
@@ -157,6 +166,7 @@ jobs:
       - run:
           name: build application docker image
           command: |
+            docker build  -t ansible_master_bionic_onbuild   master-ubuntu18.04-onbuild
             docker build  -t ansible_master_xenial_onbuild   master-ubuntu16.04-onbuild
             docker build  -t ansible_master_stretch_onbuild  master-debian9-onbuild
             docker build  -t ansible_master_jessie_onbuild   master-debian8-onbuild
@@ -165,11 +175,13 @@ jobs:
       - run:
           name: Validating the test results
           command: |
+            docker run -i ansible_master_bionic_onbuild   > result-master-ubuntu18.04-onbuild
             docker run -i ansible_master_xenial_onbuild   > result-master-ubuntu16.04-onbuild
             docker run -i ansible_master_stretch_onbuild  > result-master-debian9-onbuild
             docker run -i ansible_master_jessie_onbuild   > result-master-debian8-onbuild
             docker run -i ansible_master_centos7_onbuild  > result-master-centos7-onbuild
 
+            sh -c "[ -s result-master-ubuntu18.04-onbuild ]"
             sh -c "[ -s result-master-ubuntu16.04-onbuild ]"
             sh -c "[ -s result-master-debian9-onbuild     ]"
             sh -c "[ -s result-master-debian8-onbuild     ]"
