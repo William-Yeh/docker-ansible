@@ -19,7 +19,7 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
         python python-yaml sudo            \
         curl gcc python-pip python-dev libffi-dev libssl-dev  && \
     apt-get -y --purge remove python-cffi          && \
-    pip install --upgrade cffi pywinrm             && \
+    pip install --upgrade pycrypto cffi pywinrm    && \
     \
     \
     \
