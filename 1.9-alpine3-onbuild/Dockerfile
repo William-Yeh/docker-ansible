@@ -27,9 +27,9 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     pip install ansible==1.9.4         && \
     \
     \
-    echo "===> Removing package list..."  && \
-    apk del build-dependencies            && \
-    rm -rf /var/cache/apk/*               && \
+    echo "===> Removing package list and cache-files ..."  && \
+    apk del build-dependencies                             && \
+    rm -rf /var/cache/apk/* /root/.cache                   && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \
