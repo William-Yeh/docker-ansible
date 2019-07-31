@@ -7,7 +7,7 @@
 
 
 # pull base image
-FROM alpine:3.8
+FROM alpine:3.10
 
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
