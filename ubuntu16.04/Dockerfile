@@ -20,13 +20,13 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     \
     \
     echo "===> Installing Ansible..."  && \
-    apt-get install -y ansible  && \
+    apt-get --no-install-recommends -y install ansible  && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
-    apt-get install -y python-pip              && \
+    apt-get --no-install-recommends -y install python-pip              && \
     pip install --upgrade pycrypto pywinrm     && \
-    apt-get install -y sshpass openssh-client  && \
+    apt-get --no-install-recommends -y install sshpass openssh-client  && \
     \
     \
     echo "===> Removing Ansible PPA..."  && \

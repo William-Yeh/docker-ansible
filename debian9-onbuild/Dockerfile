@@ -15,7 +15,7 @@ MAINTAINER William Yeh <william.pjyeh@gmail.com>
 RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     apt-get update -y  &&  apt-get install --fix-missing          && \
     DEBIAN_FRONTEND=noninteractive         \
-    apt-get install -y                     \
+    apt-get --no-install-recommends -y install                     \
         python python-yaml sudo            \
         curl gcc python-pip python-dev libffi-dev libssl-dev  && \
     apt-get -y --purge remove python-cffi          && \
@@ -42,7 +42,7 @@ COPY ansible-playbook-wrapper /usr/local/bin/
 
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
-              apt-get install -y openssl ca-certificates
+              apt-get --no-install-recommends -y install openssl ca-certificates
 
 ONBUILD  WORKDIR  /tmp
 ONBUILD  COPY  .  /tmp

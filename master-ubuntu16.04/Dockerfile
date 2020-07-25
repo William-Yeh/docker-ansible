@@ -47,7 +47,7 @@ RUN echo "===> Adding Ansible's prerequisites..."   && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
-    apt-get install -y sshpass openssh-client  && \
+    apt-get --no-install-recommends -y install sshpass openssh-client  && \
     \
     \
     echo "===> Clean up..."                                         && \

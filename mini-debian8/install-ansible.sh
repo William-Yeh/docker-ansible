@@ -19,7 +19,7 @@ echo "===> Adding prerequisites..."
 apt-get update -y
 cat ___APT_INSTALL_LIST  | \
     while read ITEM; do
-        apt-get install -y $ITEM
+        apt-get --no-install-recommends -y install $ITEM
     done
 
 
