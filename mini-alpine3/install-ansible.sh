@@ -13,12 +13,12 @@ cat ___APK_INSTALL_LIST  | \
 
 cat ___PIP_INSTALL_LIST  | \
     while read ITEM; do
-        pip install --upgrade $ITEM
+        pip install --no-cache-dir --upgrade $ITEM
     done
 
 
 echo "===> Installing Ansible..."
-pip install ansible
+pip install --no-cache-dir ansible
 
 
 echo "===> Adding hosts for convenience..."  && \

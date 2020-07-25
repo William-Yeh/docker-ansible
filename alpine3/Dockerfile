@@ -20,15 +20,16 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     apk --update add python py-pip openssl ca-certificates    && \
     apk --update add --virtual build-dependencies \
                 python-dev libffi-dev openssl-dev build-base  && \
-    pip install --upgrade pip cffi                            && \
+    pip install --upgrade pip    &&  \
+    pip install --no-cache-dir --upgrade cffi                            && \
     \
     \
     echo "===> Installing Ansible..."  && \
-    pip install ansible                && \
+    pip install --no-cache-dir ansible                && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
-    pip install --upgrade pycrypto pywinrm         && \
+    pip install --no-cache-dir --upgrade pycrypto pywinrm         && \
     apk --update add sshpass openssh-client rsync  && \
     \
     \

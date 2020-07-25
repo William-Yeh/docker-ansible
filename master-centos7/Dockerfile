@@ -51,9 +51,9 @@ RUN echo "===> Enabling systemd..."  && \
                 libxml2 libxml2-devel libxslt libxslt-devel    \
                 git sudo curl                               && \
     pip install --upgrade pip  && \
-    pip install --upgrade \
+    pip install --no-cache-dir --upgrade \
         pyyaml jinja2 pycrypto paramiko httplib2            && \
-    pip install --upgrade pywinrm                           && \
+    pip install --no-cache-dir --upgrade pywinrm                           && \
     \
     \
     echo "===> Downloading Ansible's source tree..."            && \

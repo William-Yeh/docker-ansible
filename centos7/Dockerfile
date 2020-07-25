@@ -52,7 +52,7 @@ RUN echo "===> Enabling systemd..."  && \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
     yum -y install python-pip               && \
-    pip install --upgrade pywinrm           && \
+    pip install --no-cache-dir --upgrade pywinrm           && \
     yum -y install sshpass openssh-clients  && \
     \
     \

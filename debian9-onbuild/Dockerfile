@@ -19,11 +19,11 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
         python python-yaml sudo            \
         curl gcc python-pip python-dev libffi-dev libssl-dev  && \
     apt-get -y --purge remove python-cffi          && \
-    pip install --upgrade pycrypto cffi            && \
+    pip install --no-cache-dir --upgrade pycrypto cffi            && \
     \
     \
     echo "===> Installing Ansible..."   && \
-    pip install ansible                 && \
+    pip install --no-cache-dir ansible                 && \
     \
     \
     echo "===> Removing unused APT resources..."                  && \
