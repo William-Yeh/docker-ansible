@@ -19,9 +19,9 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
         python python-yaml sudo            \
         curl gcc python-pip python-dev libffi-dev libssl-dev  && \
     apt-get -y --purge remove python-cffi    && \
-    pip install --upgrade setuptools         && \
-    pip install --upgrade pycrypto           && \
-    pip install --upgrade cffi pywinrm       && \
+    pip install --no-cache-dir --upgrade setuptools         && \
+    pip install --no-cache-dir --upgrade pycrypto           && \
+    pip install --no-cache-dir --upgrade cffi pywinrm       && \
     \
     \
     echo "===> Fix strange bug under Jessie: cannot import name IncompleteRead"  && \
@@ -29,7 +29,7 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     \
     \
     echo "===> Installing Ansible..."   && \
-    pip install ansible                 && \
+    pip install --no-cache-dir ansible                 && \
     \
     \
     \

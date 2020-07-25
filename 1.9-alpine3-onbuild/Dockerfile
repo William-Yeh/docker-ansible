@@ -20,11 +20,12 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     apk --update add python py-pip openssl ca-certificates    && \
     apk --update add --virtual build-dependencies \
                 python-dev libffi-dev openssl-dev build-base  && \
-    pip install --upgrade pip pycrypto cffi                   && \
+    pip install --upgrade pip    &&  \
+    pip install --no-cache-dir --upgrade pycrypto cffi                   && \
     \
     \
     echo "===> Installing Ansible..."  && \
-    pip install ansible==1.9.4         && \
+    pip install --no-cache-dir ansible==1.9.4         && \
     \
     \
     echo "===> Removing package list..."  && \

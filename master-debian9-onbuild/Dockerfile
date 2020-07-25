@@ -24,9 +24,9 @@ RUN echo "===> Adding Ansible's prerequisites..."         && \
     echo "--> Upgrading pip..."                     && \
     # @see https://github.com/pypa/pip/issues/5240#issuecomment-383129401  && \
     python -m pip install --upgrade pip             && \
-    pip install --upgrade setuptools wheel          && \
-    pip install --upgrade cffi                      && \
-    pip install --upgrade pyyaml jinja2 pycrypto    && \
+    pip install --no-cache-dir --upgrade setuptools wheel          && \
+    pip install --no-cache-dir --upgrade cffi                      && \
+    pip install --no-cache-dir --upgrade pyyaml jinja2 pycrypto    && \
     \
     \
     echo "===> Downloading Ansible's source tree..."            && \

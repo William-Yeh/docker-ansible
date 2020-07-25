@@ -25,7 +25,7 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
     #apt-get install -y python-pip              && \
-    #pip install --upgrade pywinrm              && \
+    #pip install --no-cache-dir --upgrade pywinrm              && \
     apt-get install -y sshpass openssh-client  && \
     \
     \

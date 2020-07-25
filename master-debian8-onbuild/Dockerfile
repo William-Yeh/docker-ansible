@@ -27,8 +27,8 @@ RUN echo "===> Adding Ansible's prerequisites..."         && \
     echo "===> Fix strange bug under Jessie: cannot import name IncompleteRead"  && \
     easy_install -U pip    && \
     \
-    pip install --upgrade cffi pywinrm              && \
-    pip install --upgrade pyyaml jinja2 pycrypto    && \
+    pip install --no-cache-dir --upgrade cffi pywinrm              && \
+    pip install --no-cache-dir --upgrade pyyaml jinja2 pycrypto    && \
     \
     \
     echo "===> Downloading Ansible's source tree..."            && \
