@@ -30,7 +30,7 @@ RUN echo "===> Adding Ansible's prerequisites..."   && \
     \
     \
     echo "===> Downloading Ansible's source tree..."            && \
-    git clone git://github.com/ansible/ansible.git --recursive  && \
+    git clone --depth 1 git://github.com/ansible/ansible.git --recursive  && \
     \
     \
     echo "===> Compiling Ansible..."      && \
