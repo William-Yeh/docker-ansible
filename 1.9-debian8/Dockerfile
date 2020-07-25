@@ -15,7 +15,7 @@ MAINTAINER William Yeh <william.pjyeh@gmail.com>
 RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     apt-get update -y  &&  apt-get install --fix-missing          && \
     DEBIAN_FRONTEND=noninteractive         \
-    apt-get install -y                     \
+    apt-get --no-install-recommends -y install                     \
         python python-yaml sudo            \
         curl gcc python-pip python-dev libffi-dev libssl-dev  && \
     apt-get -y --purge remove python-cffi    && \
@@ -28,7 +28,7 @@ RUN echo "===> Installing python, sudo, and supporting tools..."  && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
-    apt-get install -y sshpass openssh-client  && \
+    apt-get --no-install-recommends -y install sshpass openssh-client  && \
     \
     \
     echo "===> Removing unused APT resources..."                  && \

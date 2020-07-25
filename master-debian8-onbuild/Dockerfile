@@ -69,7 +69,7 @@ COPY ansible-playbook-wrapper /usr/local/bin/
 
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
-              apt-get install -y openssl ca-certificates
+              apt-get --no-install-recommends -y install openssl ca-certificates
 
 ONBUILD  WORKDIR  /tmp
 ONBUILD  COPY  .  /tmp
